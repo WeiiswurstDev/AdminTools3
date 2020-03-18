@@ -1,0 +1,41 @@
+### GERMAN TRANSLATION ###
+###
+### Farbcodes fangen mit & an, lerne hier mehr: http://ess.khhq.net/mc/
+###
+### Um in der "Lore", also der Beschreibung von Items Zeilenumbrüche zu haben, benutze ##
+### (also 2 # direkt hintereinander)
+###
+### Bitte bearbeite diese Datei nicht, sondern kopiere den
+### Inhalt in eine neue Datei. Diese Datei wird bei jedem Start
+### überprüft und ggf. geändert.
+###
+######## ÄNDERUNGEN IN DIESER DATEI WERDEN BEI JEDEM START ENTFERNT !!!!!!!!
+
+lang: de
+prefix: "&a&oAdminTools &8| &7"
+
+chatmessages:
+  noperm: "&cDir fehlen diese Rechte: &e%s"
+  syntax: "&cSyntaxfehler. Richtige Syntax: &e%s"
+  moduleNotFound: "&cEs existiert kein Modul namens &e%s&c."
+  missingPlayer: "&cDu hast keinen Spieler ausgewählt"
+  missingWorld: "&cDu hast keine Welt ausgewählt"
+  playerOnlyCommand: "Diesen Befehl kannst du nur Ingame benutzen!"
+
+gui:
+  moduleSelector:
+    invName: "&bWähle ein Modul aus!"
+    nopermLore: "&cDu kannst dieses Modul ##&cnicht nutzen, da du##&ckeine Rechte dazu hast.## "
+  playerSelector:
+    invName: "&bWähle einen Spieler"
+    itemLore: "&7*Click zum Auswählen*"
+
+
+module:
+  heal:
+    item:
+      name: "&4Heilen"
+      lore: "&7Heile dich selbst ##&7oder jemand anderen"
+    message:
+      applyToOther: "&aDu wurdest von &b%s &ageheilt."
+      applyToSelf: "&aDu hast dich geheilt."

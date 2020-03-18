@@ -1,0 +1,16 @@
+name: Admintools3
+version: 3.0.0
+main: dev.wwst.admintools3.AdminTools3
+authors: [Weiiswurst]
+description: AdminTools v3
+website: ks1.xyz
+api-version: "1.13"
+softdepend:
+  - ProtocolLib
+
+commands:
+  admingui:
+    description: Opens the AdminTools3 GUI
+    aliases:
+      - a
+      - admintools
