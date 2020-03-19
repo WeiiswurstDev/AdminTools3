@@ -1,13 +1,15 @@
 ### CONFIGURATION FILE
 ###
+###  --- ENGLISH ---
 ### This file is for plugin configuration ONLY. To change message texts,
 ### copy a messages_en.yml - file, change en to your language sign and change "language" in this file to your language sign.
 ### NEVER EDIT messages_de.yml OR messages_en.yml !!! THEY GET OVERWRITTEN AT EVERY START!
 ###
+###  --- DEUTSCH ---
 ### Diese Datei ist ausschließlich für die Konfiguration gedacht.
 ### Um Nachrichten zu ändern, kopiere messages_de.yml und ändere de in das Kürzel der Sprache. Ändere auch hier "language" zu dem Kürzel der Sprache.
 ### BEARBEITE NIEMALS message_de.yml ODER message_en.yml !!! DIESE DATEIEN WERDEN BEI JEDEM START ÜBERSCHRIEBEN !!!
 ###
 
 language: en
-prefix: "&cAdminTools &8│ &7"
+prefix: "&cAdminTools&8│ &7"

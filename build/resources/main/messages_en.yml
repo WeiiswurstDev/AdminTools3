@@ -6,9 +6,6 @@
 ###
 ######## ANY CHANGES MADE IN HERE ARE REMOVED AT STARTUP !!!!!!!!
 
-lang: de
-prefix: "&a&oAdminTools &8| &7"
-
 chatmessages:
   noperms: "&cPermission missing: &e%s"
   syntax: "&cSyntax error. Please use: &e%s"

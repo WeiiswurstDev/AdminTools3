@@ -11,19 +11,26 @@
 ###
 ######## ÄNDERUNGEN IN DIESER DATEI WERDEN BEI JEDEM START ENTFERNT !!!!!!!!
 
-lang: de
-prefix: "&a&oAdminTools &8| &7"
-
 chatmessages:
   noperm: "&cDir fehlen diese Rechte: &e%s"
   syntax: "&cSyntaxfehler. Richtige Syntax: &e%s"
+  moduleNotFound: "&cEs existiert kein Modul namens &e%s&c."
   missingPlayer: "&cDu hast keinen Spieler ausgewählt"
   missingWorld: "&cDu hast keine Welt ausgewählt"
+  tooManyPlayers: "&cDa nur &e54 &cSpieler in die GUI passen, aber &e%s &conline sind, musst du diese Spieler direkt im /a-Befehl auswählen!"
+  tooManyWorlds: "&cDa nur &e54 &cWelten in die GUI passen, aber &e%s &cgeladen sind, musst du diese Welten direkt im /a-Befehl auswählen!"
   playerOnlyCommand: "Diesen Befehl kannst du nur Ingame benutzen!"
 
 gui:
-  module_selector: "&bWähle ein Modul aus!"
-  noperm_lore: "&cDu kannst dieses Modul ##&cnicht nutzen, da du##&ckeine Rechte dazu hast.## "
+  moduleSelector:
+    invName: "&bWähle ein Modul aus!"
+    noPermLore: "&cDu kannst dieses Modul ##&cnicht nutzen, da du##&ckeine Rechte dazu hast.## "
+  playerSelector:
+    invName: "&bWähle einen Spieler"
+    itemLore: "&7*Click zum Auswählen*"
+  worldSelector:
+    invName: "&bWähle eine Welt"
+    itemLore: "&7*Click zum Auswählen*"
 
 
 module:
@@ -32,4 +39,6 @@ module:
       name: "&4Heilen"
       lore: "&7Heile dich selbst ##&7oder jemand anderen"
     message:
-      applyToOther: "&aDu wurdest von &b%s &ageheilt."
+      applyToOther: "&aDu hast &b%s &ageheilt."
+      applyToSelf: "&aDu hast dich geheilt."
+      appliedByOther: "&aDu wurdest von &b%s &ageheilt."

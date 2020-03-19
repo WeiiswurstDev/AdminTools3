@@ -11,6 +11,7 @@ softdepend:
 commands:
   admingui:
     description: Opens the AdminTools3 GUI
+    usage: /a [<module> [player] [world]]
     aliases:
       - a
       - admintools
