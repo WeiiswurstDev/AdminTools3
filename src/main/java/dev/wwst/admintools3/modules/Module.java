@@ -1,17 +1,28 @@
 package dev.wwst.admintools3.modules;
 
+import dev.wwst.admintools3.util.Configuration;
 import dev.wwst.admintools3.util.MessageTranslator;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 
+import java.time.Instant;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
 public class Module {
 
-    protected boolean needsWorld, needsPlayer;
-    protected String name;
-    protected Material material;
+    protected final boolean needsWorld, needsPlayer;
+    protected final String name;
+    protected final Material material;
 
-    protected String itemname, itemlore;
+    protected final String itemname, itemlore;
+
+    protected final int cooldown;
+    protected final Map<UUID, Long> onCooldown;
+
+    protected final MessageTranslator msg;
 
     protected Module(boolean needsWorld, boolean needsPlayer, String name, Material material) {
         this.needsWorld = needsWorld;
@@ -19,8 +30,13 @@ public class Module {
         this.name = name;
         this.material = material;
 
-        this.itemname = MessageTranslator.getInstance().getMessage("module."+name+".item.name");
-        this.itemlore = MessageTranslator.getInstance().getMessage("module."+name+".item.lore");
+        this.msg = MessageTranslator.getInstance();
+
+        this.itemname = msg.getMessage("module."+name+".item.name");
+        this.itemlore = msg.getMessage("module."+name+".item.lore");
+
+        this.cooldown = Configuration.get().getInt("modules."+name+".cooldown");
+        this.onCooldown = new HashMap<>();
     }
 
     public boolean execute(Player player, Player other, World world) {
@@ -28,32 +44,43 @@ public class Module {
             // wird noch überprüft ob er sie auf sich selbst anwenden darf und er sie auf sich selbst anwendet
             if(player.hasPermission("admintools3.module."+name+".self")) {
                 if(player.getUniqueId() != other.getUniqueId()) {
-                    player.sendMessage(MessageTranslator.getInstance().getMessageAndReplace("chatmessages.noperm",true,"admintools3.module."+name));
+                    player.sendMessage(msg.getMessageAndReplace("chatmessages.noperm",true,"admintools3.module."+name));
                     return false;
                 }
             } else {
                 if(player.getUniqueId() != other.getUniqueId()) {
-                    player.sendMessage(MessageTranslator.getInstance().getMessageAndReplace("chatmessages.noperm",true,"admintools3.module."+name));
+                    player.sendMessage(msg.getMessageAndReplace("chatmessages.noperm",true,"admintools3.module."+name));
                 } else {
-                    player.sendMessage(MessageTranslator.getInstance().getMessageAndReplace("chatmessages.noperm",true,"admintools3.module."+name+".self"));
+                    player.sendMessage(msg.getMessageAndReplace("chatmessages.noperm",true,"admintools3.module."+name+".self"));
                 }
                 return false;
             }
         }
         if(needsWorld && world == null) {
-            player.sendMessage(MessageTranslator.getInstance().getMessage("chatmessage.missingWorld", true));
+            player.sendMessage(msg.getMessage("chatmessages.missingWorld", true));
             return false;
         }
         if(needsPlayer && (other == null || !other.isOnline())) {
-            player.sendMessage(MessageTranslator.getInstance().getMessage("chatmessage.missingPlayer", true));
+            player.sendMessage(msg.getMessage("chatmessages.missingPlayer", true));
             return false;
         }
 
+        if(cooldown > 0 && !player.hasPermission("admintools3.bypasscooldown") && !player.hasPermission("admintools3.bypasscooldown."+name)) {
+            if(onCooldown.containsKey(player.getUniqueId())) {
+                if(Instant.now().isBefore(Instant.ofEpochSecond(onCooldown.get(player.getUniqueId())))) {
+                    player.sendMessage(msg.getMessage("chatmessages.onCooldown", true));
+                    return false;
+                }
+            }
+            onCooldown.put(player.getUniqueId(), Instant.now().getEpochSecond());
+        }
+
         if(needsPlayer && player.getUniqueId() != other.getUniqueId()) {
-            other.sendMessage(MessageTranslator.getInstance().getMessageAndReplace("module." + name + ".message.appliedFromOther", true, player.getName()));
-            player.sendMessage(MessageTranslator.getInstance().getMessageAndReplace("module."+name+".message.applyToOther", true, other.getName()));
+            other.sendMessage(msg.getMessageAndReplace("module." + name + ".message.appliedFromOther", true, player.getName()));
+            player.sendMessage(msg.getMessageAndReplace("module."+name+".message.applyToOther", true, other.getName()));
         } else
-            player.sendMessage(MessageTranslator.getInstance().getMessage("module."+name+".message.applyToSelf", true));
+            player.sendMessage(msg.getMessage("module."+name+".message.applyToSelf", true));
+
         return true;
     }
 

@@ -1,5 +1,6 @@
 package dev.wwst.admintools3.modules;
 
+import dev.wwst.admintools3.util.Configuration;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.attribute.Attribute;
@@ -7,10 +8,11 @@ import org.bukkit.entity.Player;
 
 public class HealModule extends Module {
 
-
+    private final boolean fillFoodBar;
 
     public HealModule() {
         super(false, true, "heal", Material.GOLDEN_APPLE);
+        fillFoodBar = Configuration.get().getBoolean("modules.heal.fillFoodBar");
     }
 
     @Override
@@ -19,7 +21,7 @@ public class HealModule extends Module {
             return false;
         }
         other.setHealth(other.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
-        other.setFoodLevel(20);
+        if(fillFoodBar) other.setFoodLevel(20);
         return true;
     }
 }

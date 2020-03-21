@@ -25,7 +25,9 @@ public class GUIManager {
 
     private static GUIManager INSTANCE;
 
-    private final String nopermLore, moduleSelectorInvName, playerSelectorInvName, playerSelectorItemLore, worldSelectorInvName, worldSelectorItemLore;
+    private final String nopermLore, moduleSelectorInvName, moduleSelectorClickInfo,
+            playerSelectorInvName, playerSelectorItemLore,
+            worldSelectorInvName, worldSelectorItemLore;
 
     public GUIManager() {
         INSTANCE = this;
@@ -35,6 +37,7 @@ public class GUIManager {
 
         nopermLore = msg.getMessage("gui.moduleSelector.noPermLore");
         moduleSelectorInvName = msg.getMessage("gui.moduleSelector.invName");
+        moduleSelectorClickInfo = " ##"+msg.getMessage("gui.moduleSelector.clickInfo");
         playerSelectorInvName = msg.getMessage("gui.playerSelector.invName");
         playerSelectorItemLore = msg.getMessage("gui.playerSelector.itemLore");
         worldSelectorInvName = msg.getMessage("gui.worldSelector.invName");
@@ -76,6 +79,7 @@ public class GUIManager {
             }
             item.setName(m.getItemname());
             item.addLore(m.getItemlore());
+            item.addLore(moduleSelectorClickInfo);
             menu.setItem(slot, item.build());
         }
         return menu.build();

@@ -25,6 +25,7 @@ gui:
   moduleSelector:
     invName: "&bWähle ein Modul aus!"
     noPermLore: "&cDu kannst dieses Modul ##&cnicht nutzen, da du##&ckeine Rechte dazu hast.## "
+    clickInfo: "&7LINKSCLICK: Auf DICH ausführen ## &7RECHTSCLICK: Jemand anderes auswählen"
   playerSelector:
     invName: "&bWähle einen Spieler"
     itemLore: "&7*Click zum Auswählen*"

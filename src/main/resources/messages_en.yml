@@ -1,5 +1,10 @@
 ### ENGLISH TRANSLATION ###
 ###
+### Color-Codes start with an &. Learn more at http://ess.khhq.net/mc/
+###
+### In the "lore", the description, of an item, you can use ##
+### (2 hashtags) to make a new line.
+###
 ### Please dont edit the contents of this file.
 ### This file gets overwritten everytime the server starts!
 ### Copy it in a new file, name that to "messages_<something>.yml" and change the language in the config to <something>!
@@ -7,5 +12,34 @@
 ######## ANY CHANGES MADE IN HERE ARE REMOVED AT STARTUP !!!!!!!!
 
 chatmessages:
-  noperms: "&cPermission missing: &e%s"
-  syntax: "&cSyntax error. Please use: &e%s"
+  noperm: "&cMissing Permission: &e%s"
+  syntax: "&cSyntax Error. Please use: &e%s"
+  moduleNotFound: "&cCant find a module named &e%s&c."
+  missingPlayer: "&cYou didn't select a player!"
+  missingWorld: "&cYou didn't select a world!"
+  tooManyPlayers: "&There are &e%s&c players online, but only &e54&c fit in the GUI. You have to use the /a <module> [player] [world] to select those."
+  tooManyWorlds: "&There are &e%s&c worlds, but only &e54&c fit in the GUI. You have to use the /a <module> [player] [world] to select those."
+  playerOnlyCommand: "You may only use this command as a player."
+
+gui:
+  moduleSelector:
+    invName: "&bSelect a module!"
+    noPermLore: "&cYou may not use ##&cthis module, you don't##&chave permission!## "
+    clickInfo: "&7LEFT CLICK to apply on yourself ## &7RIGHT CLICK to select a player"
+  playerSelector:
+    invName: "&bSelect a player"
+    itemLore: "&7*Click to select me*"
+  worldSelector:
+    invName: "&bSelect a world"
+    itemLore: "&7*Click to select me*"
+
+
+module:
+  heal:
+    item:
+      name: "&4Heak"
+      lore: "&7Heal yourself ##&7or someone else"
+    message:
+      applyToOther: "&aYou healed &b%s."
+      applyToSelf: "&aYou healed yourself."
+      appliedByOther: "&b%s &ahealed you."

@@ -10,6 +10,7 @@ import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryAction;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -43,37 +44,35 @@ public class GUISession implements Listener {
             for(Module m : ModuleLoader.getInstance().getModuleList()) {
                 if(e.getCurrentItem().getItemMeta().getDisplayName().equals(m.getItemname())) {
                     selected = m;
-                    if(!player.hasPermission("admintools3.module."+m.getName()) && !player.hasPermission("admintools3.module."+m.getName()+".self")) {
-                        player.sendMessage(MessageTranslator.getInstance().getMessageAndReplace("chatmessages.noperm",true,"admintools3.module."+m.getName()));
-                        player.closeInventory();
-                        return;
-                    }
 
-                    if(selected.needsPlayer()) {
+                    // Linksclick - Auf DICH ausführen
+                    if(e.getAction() == InventoryAction.COLLECT_TO_CURSOR || e.getAction() == InventoryAction.PICKUP_ALL) {
+                        if(player.hasPermission("admintools3.module."+m.getName()) || player.hasPermission("admintools3.module."+m.getName()+".self")){
 
-                        if(!player.hasPermission("admintools3.module."+m.getName())) {
-                            selectedPlayer = player;
                             if(selected.needsWorld()) {
                                 closed = true;
                                 player.openInventory(GUIManager.getInstance().generateWorldSelector(player));
                                 closed = false;
                             } else {
+                                selected.execute(player, player, null);
                                 player.closeInventory();
-                                selected.execute(player,selectedPlayer,null);
                             }
-                            return;
+                        } else {
+                            player.sendMessage(MessageTranslator.getInstance().getMessageAndReplace("chatmessages.noperm",true,"admintools3.module."+m.getName()+".self"));
+                            player.closeInventory();
                         }
-
-                        closed = true;
-                        player.openInventory(GUIManager.getInstance().generatePlayerSelector(player));
-                        closed = false;
-                    } else if(selected.needsWorld()) {
-                        closed = true;
-                        player.openInventory(GUIManager.getInstance().generateWorldSelector(player));
-                        closed = false;
+                    // Rechtsclick - Auf ANDERE ausführen
+                    } else if(e.getAction() == InventoryAction.PICKUP_HALF) {
+                        if(player.hasPermission("admintools3.module."+m.getName())) {
+                            closed = true;
+                            player.openInventory(GUIManager.getInstance().generatePlayerSelector(player));
+                            closed = false;
+                        } else {
+                            player.sendMessage(MessageTranslator.getInstance().getMessageAndReplace("chatmessages.noperm",true,"admintools3.module."+m.getName()));
+                            player.closeInventory();
+                        }
                     } else {
-                        player.closeInventory();
-                        selected.execute(player,null,null);
+                        player.sendMessage("DEBUG ACTION="+e.getAction().toString());
                     }
                 }
             }
