@@ -1,6 +1,6 @@
 .gradle
 gradle
-classes
-generated
-tmp
-resources
+build/classes
+build/generated
+build/tmp
+build/resources
