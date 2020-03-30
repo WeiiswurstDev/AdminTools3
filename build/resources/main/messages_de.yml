@@ -25,13 +25,20 @@ gui:
   moduleSelector:
     invName: "&bWähle ein Modul aus!"
     noPermLore: "&cDu kannst dieses Modul ##&cnicht nutzen, da du##&ckeine Rechte dazu hast.## "
-    clickInfo: "&7LINKSCLICK: Auf DICH ausführen ## &7RECHTSCLICK: Jemand anderes auswählen"
+    mayChooseOtherPlayer: "&7LINKSCLICK: Auf DICH ausführen ##&7RECHTSCLICK: Jemand anderes auswählen"
+    mayOnlyChooseSelf: "&7CLICK: Auf DICH ausführen"
   playerSelector:
     invName: "&bWähle einen Spieler"
     itemLore: "&7*Click zum Auswählen*"
   worldSelector:
     invName: "&bWähle eine Welt"
     itemLore: "&7*Click zum Auswählen*"
+  gamemodeSelector:
+    invName: "&bWähle einen Spielmodus!"
+    survival: "&aÜberleben"
+    creative: "&aKreativ"
+    adventure: "&aAbenteuer"
+    spectator: "&aZuschauer"
 
 
 module:
@@ -43,3 +50,91 @@ module:
       applyToOther: "&aDu hast &b%s &ageheilt."
       applyToSelf: "&aDu hast dich geheilt."
       appliedByOther: "&aDu wurdest von &b%s &ageheilt."
+  kill:
+    item:
+      name: "&4Töten"
+      lore: "&7Töte dich selbst ##&7oder jemand anderen"
+    message:
+      applyToOther: "&aDu hast &b%s &aumgebracht.."
+      applyToSelf: "&aDu hast dich selbst umgebracht."
+      appliedByOther: "&aDu wurdest von &b%s &aerledigt."
+  workbench:
+    item:
+      name: "&3Werkbank öffnen"
+      lore: "&7Öffne eine Werkbank"
+    message:
+      applyToSelf: "&aDu hast eine Werkbank geöffnet."
+  enderchest:
+    item:
+      name: "&5Enderchest"
+      lore: "&7Öffne eine Enderchest##&7von einem Spieler"
+    message:
+      applyToSelf: "&aDu hast deine Enderchest geöffnet."
+      applyToOther: "&aDu hast die Enderchest von &b%s &ageöffnet."
+      appliedByOther: "&b%s &aschaut in deine Enderchest"
+  fly:
+    item:
+      name: "&fFliegen"
+      lore: "&7Ermögliche das Fliegen##&7wie im Kreativmodus"
+    message:
+      toggleOn: "&aDu kannst jetzt (wie im Kreativmodus) fliegen."
+      toggleOff: "&aDu kannst jetzt &cnicht mehr &afliegen."
+      toggledOnByOther: "&b%s &ahat für dich das Fliegen wie im Kreativmodus aktiviert."
+      toggledOffByOther: "&b%s &ahat für dich das Fliegen wie im Kreativmodus &cdeaktiviert."
+      toggledOnForOther: "&b%s &akann jetzt fliegen."
+      toggledOffForOther: "&b%s &akann nicht mehr fliegen."
+  mute:
+    item:
+      name: "&cStummschalten"
+      lore: "&7Schalte einen Spieler stumm##&7oder deaktiviere die Stummschaltung."
+    message:
+      toggleOn: "&cDu kannst nicht mehr reden."
+      toggleOff: "&aDu kannst wieder reden."
+      toggledOnByOther: "&b%s &ahat dich stummgeschaltet."
+      toggledOffByOther: "&b%s &ahat deine Stummschaltung aufgehoben."
+      toggledOnForOther: "&b%s &aist jetzt stumm."
+      toggledOffForOther: "&b%s &akann wieder reden."
+      stillMuted: "&cDu kannst nicht reden, weil du stummgeschaltet wurdest!"
+  freeze:
+    item:
+      name: "&bEinfrieren"
+      lore: "&7Verhindere Bewegungen##&7von einem Spieler oder##&7erlaube sie wieder."
+    message:
+      toggleOn: "&cDu bist eingefroren!"
+      toggleOff: "&aDu kannst dich wieder bewegen."
+      toggledOnByOther: "&b%s &ahat dich eingefroren. &7(Du kannst dich nicht mehr bewegen)"
+      toggledOffByOther: "&b%s &ahat dich wieder aufgetaut. &7(Du kannst dich wieder bewegen)."
+      toggledOnForOther: "&b%s &aist jetzt eingefroren."
+      toggledOffForOther: "&b%s &akann sich wieder bewegen."
+      stillMuted: "&cDu bist eingefroren und kannst dich daher nicht bewegen!"
+  invsee:
+    item:
+      name: "&2InventarSpion"
+      lore: "&7Öffne das Inventar##&7von einem Spieler"
+    message:
+      applyToSelf: "&cBitte öffne dein eigenes Inventar über die Taste E."
+      applyToOther: "&aDu hast das Inventar von &b%s &ageöffnet."
+      appliedByOther: "&b%s &aschaut in dein Inventar"
+  vanish:
+    item:
+      name: "&bUnsichtbarkeit"
+      lore: "&7Mache einen Spieler für Andere##&7(ohne die Rechte 'admintools3.bypass.vanish')##&bunsichtbar&7."
+    message:
+      toggleOn: "&aDu bist nun unsichtbar."
+      toggleOff: "&cDu bist wieder sichtbar."
+      toggledOnByOther: "&b%s &ahat dich unsichtbar gemacht."
+      toggledOffByOther: "&b%s &ahat dich wieder sichtbar gemacht."
+      toggledOnForOther: "&b%s &aist jetzt unsichtbar."
+      toggledOffForOther: "&b%s &aist wieder sichtbar."
+  gm:
+    item:
+      name: "&bGameMode"
+      lore: "&7Wähle einen GameMode##&7(Spielmodus) aus!"
+    message:
+      applyToSelf: "&aDu kannst einen GameMode auswählen."
+      applyToOther: "&b%s &akann sich einen GameMode aussuchen."
+      appliedByOther: "&b%s &ahat die GameMode-Auswahl geöffnet."
+      survival: "&aDu bist jetzt im Überlebens(Survival)-Modus."
+      creative: "&aDu bist jetzt im Kreativmodus (Creative)."
+      adventure: "&aDu bist jetzt im Abenteuermodus (Adventure)."
+      spectator: "&aDu bist jetzt im Zuschauermodus (Spectator)."

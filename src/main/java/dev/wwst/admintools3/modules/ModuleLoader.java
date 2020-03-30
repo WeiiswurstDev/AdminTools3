@@ -1,8 +1,11 @@
 package dev.wwst.admintools3.modules;
 
 import com.google.common.collect.Lists;
+import dev.wwst.admintools3.AdminTools3;
+import org.bukkit.Bukkit;
 
 import java.util.List;
+import java.util.logging.Level;
 
 public class ModuleLoader {
 
@@ -14,8 +17,18 @@ public class ModuleLoader {
         INSTANCE = this;
         modules = Lists.newArrayList();
 
-        modules.add(new HealModule());
+        registerModule(new HealModule());
+        registerModule(new KillModule());
+        registerModule(new EnderchestModule());
+        registerModule(new WorkbenchModule());
+        registerModule(new FlyModule());
+        registerModule(new MuteModule());
+        registerModule(new FreezeModule());
+        registerModule(new InvSeeModule());
+        registerModule(new VanishModule());
+        registerModule(new GamemodeModule());
 
+        AdminTools3.getInstance().getLogger().log(Level.INFO,modules.size()+" modules loaded.");
     }
 
     public static ModuleLoader getInstance() {
@@ -24,5 +37,12 @@ public class ModuleLoader {
 
     public List<Module> getModuleList() {
         return modules;
+    }
+
+    public void registerModule(Module module) {
+        for(Module m : modules) {
+            if(m.getName().equals(module.getName())) return;
+        }
+        modules.add(module);
     }
 }

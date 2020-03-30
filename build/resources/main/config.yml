@@ -17,6 +17,7 @@
 
 language: en
 prefix: "&cAdminTools&8│ &7"
+log-module-usage: true
 
 modules:
   heal:

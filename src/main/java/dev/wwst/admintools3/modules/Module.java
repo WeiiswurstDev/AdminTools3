@@ -2,6 +2,7 @@ package dev.wwst.admintools3.modules;
 
 import dev.wwst.admintools3.util.Configuration;
 import dev.wwst.admintools3.util.MessageTranslator;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
@@ -23,6 +24,8 @@ public class Module {
     protected final Map<UUID, Long> onCooldown;
 
     protected final MessageTranslator msg;
+
+    protected boolean useDefaultMessageKeyFormat = true;
 
     protected Module(boolean needsWorld, boolean needsPlayer, String name, Material material) {
         this.needsWorld = needsWorld;
@@ -65,7 +68,7 @@ public class Module {
             return false;
         }
 
-        if(cooldown > 0 && !player.hasPermission("admintools3.bypasscooldown") && !player.hasPermission("admintools3.bypasscooldown."+name)) {
+        if(cooldown > 0 && !player.hasPermission("admintools3.bypass.cooldown") && !player.hasPermission("admintools3.bypass.cooldown."+name)) {
             if(onCooldown.containsKey(player.getUniqueId())) {
                 if(Instant.now().isBefore(Instant.ofEpochSecond(onCooldown.get(player.getUniqueId())))) {
                     player.sendMessage(msg.getMessage("chatmessages.onCooldown", true));
@@ -74,13 +77,22 @@ public class Module {
             }
             onCooldown.put(player.getUniqueId(), Instant.now().getEpochSecond());
         }
+        // Some modules, such as mute, have their own message key format.
+        // Custom modules by third parties could use this as well to use their own message system, if they want to.
+        if(useDefaultMessageKeyFormat) {
+            if(needsPlayer && player.getUniqueId() != other.getUniqueId()) {
+                other.sendMessage(msg.getMessageAndReplace("module."+name+".message.appliedByOther", true, player.getName()));
+                player.sendMessage(msg.getMessageAndReplace("module."+name+".message.applyToOther", true, other.getName()));
+            } else
+                player.sendMessage(msg.getMessage("module."+name+".message.applyToSelf", true));
+        }
 
-        if(needsPlayer && player.getUniqueId() != other.getUniqueId()) {
-            other.sendMessage(msg.getMessageAndReplace("module." + name + ".message.appliedFromOther", true, player.getName()));
-            player.sendMessage(msg.getMessageAndReplace("module."+name+".message.applyToOther", true, other.getName()));
-        } else
-            player.sendMessage(msg.getMessage("module."+name+".message.applyToSelf", true));
-
+        if(Configuration.get().getBoolean("log-module-usage")) {
+            String logmessage = "[LOG] Player "+player.getName()+" used the module "+name;
+            if(other != null) logmessage += " on the player "+other.getName();
+            if(world != null) logmessage += " in the world "+world.getName();
+            Bukkit.getConsoleSender().sendMessage(logmessage);
+        }
         return true;
     }
 

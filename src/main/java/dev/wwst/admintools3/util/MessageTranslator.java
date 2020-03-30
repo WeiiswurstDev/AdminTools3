@@ -31,6 +31,7 @@ public class MessageTranslator {
         INSTANCE = this;
         plugin = AdminTools3.getInstance();
         prefix = Configuration.get().getString("prefix");
+        messages = new HashMap<>();
         this.language = language;
 
         saveDefaults();
@@ -45,11 +46,25 @@ public class MessageTranslator {
         }
         YamlConfiguration cfg = YamlConfiguration.loadConfiguration(languageFile);
         Map<String, Object> values = cfg.getValues(true);
-        messages = new HashMap<>();
         for(String key : values.keySet()) {
             messages.put(key, values.get(key).toString());
         }
         plugin.getLogger().log(Level.INFO, "Language loaded: messages_"+language+".yml");
+    }
+
+    // Loading custom language files for addons
+    public void loadMessageFile(String path) {
+        File languageFile = new File(path);
+        if(!languageFile.exists()) {
+            plugin.getLogger().log(Level.SEVERE, "Could not find a config file at "+path);
+            return;
+        }
+        YamlConfiguration cfg = YamlConfiguration.loadConfiguration(languageFile);
+        Map<String, Object> values = cfg.getValues(true);
+        for(String key : values.keySet()) {
+            messages.put(key, values.get(key).toString());
+        }
+        plugin.getLogger().log(Level.INFO, "Custom language file loaded: "+path);
     }
 
     private void saveDefaults() {

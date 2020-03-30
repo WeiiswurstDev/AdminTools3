@@ -13,7 +13,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryAction;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
 public class GUISession implements Listener {
@@ -54,8 +53,8 @@ public class GUISession implements Listener {
                                 player.openInventory(GUIManager.getInstance().generateWorldSelector(player));
                                 closed = false;
                             } else {
-                                selected.execute(player, player, null);
                                 player.closeInventory();
+                                selected.execute(player, player, null);
                             }
                         } else {
                             player.sendMessage(MessageTranslator.getInstance().getMessageAndReplace("chatmessages.noperm",true,"admintools3.module."+m.getName()+".self"));
@@ -68,8 +67,9 @@ public class GUISession implements Listener {
                             player.openInventory(GUIManager.getInstance().generatePlayerSelector(player));
                             closed = false;
                         } else {
-                            player.sendMessage(MessageTranslator.getInstance().getMessageAndReplace("chatmessages.noperm",true,"admintools3.module."+m.getName()));
+                            //player.sendMessage(MessageTranslator.getInstance().getMessageAndReplace("chatmessages.noperm",true,"admintools3.module."+m.getName()));
                             player.closeInventory();
+                            selected.execute(player, player, null);
                         }
                     } else {
                         player.sendMessage("DEBUG ACTION="+e.getAction().toString());
@@ -103,10 +103,8 @@ public class GUISession implements Listener {
     @EventHandler
     public void onClose(InventoryCloseEvent e) {
         if(closed) return;
-        Bukkit.getConsoleSender().sendMessage("5");
         if(e.getPlayer().getUniqueId() == player.getUniqueId()) {
             closed = true;
-            Bukkit.getConsoleSender().sendMessage("6");
             GUIManager.getInstance().closeSession(player);
         }
     }

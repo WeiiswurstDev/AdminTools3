@@ -25,13 +25,20 @@ gui:
   moduleSelector:
     invName: "&bSelect a module!"
     noPermLore: "&cYou may not use ##&cthis module, you don't##&chave permission!## "
-    clickInfo: "&7LEFT CLICK to apply on yourself ## &7RIGHT CLICK to select a player"
+    mayChooseOtherPlayer: "&7LEFT CLICK to apply on yourself ##&7RIGHT CLICK to select a player"
+    mayOnlyChooseSelf: "&7CLICK: apply on yourself"
   playerSelector:
     invName: "&bSelect a player"
     itemLore: "&7*Click to select me*"
   worldSelector:
     invName: "&bSelect a world"
     itemLore: "&7*Click to select me*"
+  gamemodeSelector:
+    invName: "&bChoose a gamemode!"
+    survival: "&aSurvival"
+    creative: "&aCreative"
+    adventure: "&aAdventure"
+    spectator: "&aSpectator"
 
 
 module:
@@ -43,3 +50,91 @@ module:
       applyToOther: "&aYou healed &b%s."
       applyToSelf: "&aYou healed yourself."
       appliedByOther: "&b%s &ahealed you."
+  kill:
+    item:
+      name: "&4Kill"
+      lore: "&7Kill yourself ##&7or someone else"
+    message:
+      applyToOther: "&aYou killed &b%s."
+      applyToSelf: "&aYou killed yourself."
+      appliedByOther: "&b%s &akilled you."
+  workbench:
+    item:
+      name: "&3Crafting Table"
+      lore: "&7Open a Crafting Table"
+    message:
+      applyToSelf: "&aYou opened your mobile crafting table."
+  enderchest:
+    item:
+      name: "&5EnderChest"
+      lore: "&7Open the enderchest##&7of somebody."
+    message:
+      applyToSelf: "&aYou opened your enderchest."
+      applyToOther: "&aYou opened &b%s&a's enderchest."
+      appliedByOther: "&b%s &aopened your enderchest."
+  fly:
+    item:
+      name: "&fFly"
+      lore: "&7Enables Flying, like##&7in creative mode."
+    message:
+      toggleOn: "&aYou can now fly like in creative mode."
+      toggleOff: "&cYou can't fly anymore."
+      toggledOnByOther: "&b%s &aenabled flying like in creative mode for you."
+      toggledOffByOther: "&b%s &cdisabled flying like in creative mode for you."
+      toggledOnForOther: "&aFlying was enabled for &b%s"
+      toggledOffForOther: "&aFlying was disabled for &b%s"
+  mute:
+    item:
+      name: "&cMute"
+      lore: "&7Mute or unmute##&7a player."
+    message:
+      toggleOn: "&cYou were muted."
+      toggleOff: "&aYou can talk again."
+      toggledOnByOther: "&b%s &cmuted you."
+      toggledOffByOther: "&b%s &aunmuted you."
+      toggledOnForOther: "&b%s &ais now muted."
+      toggledOffForOther: "&b%s &acan talk again."
+      stillMuted: "&cYou can't talk because you were muted!"
+  freeze:
+    item:
+      name: "&bFreeze"
+      lore: "&7Prohibit movement##&7by a player or##&7allow it again."
+    message:
+      toggleOn: "&cYou were frozen!"
+      toggleOff: "&aYou can move again."
+      toggledOnByOther: "&b%s &afreezed you. &7(You can't move anymore)"
+      toggledOffByOther: "&b%s &adefrosted you. &7(You can move again)."
+      toggledOnForOther: "&b%s &awas frozen."
+      toggledOffForOther: "&b%s &acan move again."
+      stillMuted: "&cYou can't move because you were frozen!"
+  invsee:
+    item:
+      name: "&2InvSee"
+      lore: "&7Open the inventory##&7of a player"
+    message:
+      applyToSelf: "&cPress E to open your own inventory."
+      applyToOther: "&aDu opened the inventory of &b%s&a."
+      appliedByOther: "&b%s &atakes a look at your inventory."
+  vanish:
+    item:
+      name: "&bVanish"
+      lore: "&7Make a player &binvisible##&7to others without this permission:##&7'admintools3.bypass.vanish'."
+    message:
+      toggleOn: "&aYou are invisible."
+      toggleOff: "&cYou are visible again."
+      toggledOnByOther: "&b%s &avanished you."
+      toggledOffByOther: "&b%s &amade you visible to others again."
+      toggledOnForOther: "&b%s &ais now invisible."
+      toggledOffForOther: "&b%s &ais visible again."
+  gm:
+    item:
+      name: "&bGameMode"
+      lore: "&7Select a gamemode"
+    message:
+      applyToSelf: "&aYou can choose a gamemode now."
+      applyToOther: "&b%s &acan choose a gamemode."
+      appliedByOther: "&b%s &aopened the gamemode selection for you."
+      survival: "&aYou are now in Survival mode."
+      creative: "&aYou are now in Creative mode."
+      adventure: "&aYou are now in Adventure mode."
+      spectator: "&aYou are now in Spectator mode."
