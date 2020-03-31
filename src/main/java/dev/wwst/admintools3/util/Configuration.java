@@ -1,5 +1,6 @@
 package dev.wwst.admintools3.util;
 
+import com.google.common.io.Files;
 import dev.wwst.admintools3.AdminTools3;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -13,6 +14,8 @@ public class Configuration {
 
     private static File file;
     private static FileConfiguration customFile;
+
+    private static final int CURRENT_CONFIG_VERSION = 300;
 
     private static AdminTools3 plugin;
 
@@ -30,6 +33,20 @@ public class Configuration {
             plugin.saveResource("config.yml",false);
         }
         customFile = YamlConfiguration.loadConfiguration(file);
+        int configVer = customFile.getInt("CONFIG_VERSION_NEVER_CHANGE_THIS");
+        if(CURRENT_CONFIG_VERSION > configVer) {
+            try {
+                Files.copy(file, new File(plugin.getDataFolder(), "config_OLD_VERSION.yml"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            plugin.saveResource("config.yml",true);
+            plugin.getLogger().log(Level.WARNING, "!!! IT SEEMS LIKE YOU UPDATED ADMINTOOLS3 !!!");
+            plugin.getLogger().log(Level.WARNING, "!!! YOUR OLD config.yml WAS COPIED TO config_OLD_VERSION.yml !!!");
+            plugin.getLogger().log(Level.WARNING, "!!! A NEW config.yml WITH UPDATED VALUES WAS PASTED TO config.yml INSTEAD !!!");
+            plugin.getLogger().log(Level.WARNING, "!!! STOP THE SERVER TO CHANGE VALUES IN THE NEW config.yml !!!");
+            customFile = YamlConfiguration.loadConfiguration(file);
+        }
         plugin.getLogger().log(Level.INFO, "Done");
 
     }

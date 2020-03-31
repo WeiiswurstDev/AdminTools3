@@ -1,15 +1,12 @@
 ### ENGLISH TRANSLATION ###
 ###
-### Color-Codes start with an &. Learn more at http://ess.khhq.net/mc/
-###
-### In the "lore", the description, of an item, you can use ##
-### (2 hashtags) to make a new line.
+### TO EDIT THIS, FOLLOW THE GUIDELINES AT https://github.com/WeiiswurstDev/AdminTools3/wiki/Configuring-AdminTools3
 ###
 ### Please dont edit the contents of this file.
 ### This file gets overwritten everytime the server starts!
 ### Copy it in a new file, name that to "messages_<something>.yml" and change the language in the config to <something>!
 ###
-######## ANY CHANGES MADE IN HERE ARE REMOVED AT STARTUP !!!!!!!!
+######## ANY CHANGES MADE IN HERE ARE REMOVED AT STARTUP !!!!!!!! DO NOT CHANGE THIS FILE
 
 chatmessages:
   noperm: "&cMissing Permission: &e%s"

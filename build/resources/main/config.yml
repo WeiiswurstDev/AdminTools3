@@ -5,21 +5,14 @@
 ### copy a messages_en.yml - file, change en to your language sign and change "language" in this file to your language sign.
 ### NEVER EDIT messages_de.yml OR messages_en.yml !!! THEY GET OVERWRITTEN AT EVERY START!
 ###
-### The cooldown is in SECONDS, so cooldown:1 means a cooldown of 1 second!
-###
-### You can add any command to any module by using commandAlias
-### e.g. /wb is a synonym for /workbench and for /a wb and for /a workbench
+### To avoid making any mistakes, READ THE WIKI !!! https://github.com/WeiiswurstDev/AdminTools3/wiki/Configuring-AdminTools3
 ###
 ###  --- DEUTSCH ---
 ### Diese Datei ist ausschließlich für die Konfiguration gedacht.
 ### Um Nachrichten zu ändern, kopiere messages_de.yml und ändere de in das Kürzel der Sprache. Ändere auch hier "language" zu dem Kürzel der Sprache.
 ### BEARBEITE NIEMALS message_de.yml ODER message_en.yml !!! DIESE DATEIEN WERDEN BEI JEDEM START ÜBERSCHRIEBEN !!!
 ###
-### Der Cooldown wird in Sekunden angegeben: cooldown:1 heist 1 Sekunde Cooldown!
-###
-### Du kannst jedem Modul weitere Befehle (Aliase) geben
-### z.B. /wb ist ein Synonym von /workbench, /a wb und /a workbench
-### Damit kannst du allen Modulen auch deutsche Befehle geben!
+### Bitte lies das Wiki, um Details zu bekommen: https://github.com/WeiiswurstDev/AdminTools3/wiki/Configuring-AdminTools3 (Englisch)
 
 language: en
 prefix: "&cAdminTools&8│ &7"
@@ -43,3 +36,6 @@ module:
   invsee:
     aliases:
       - invspy
+
+
+CONFIG_VERSION_NEVER_CHANGE_THIS: 300

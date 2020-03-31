@@ -27,6 +27,7 @@ public class ChatClearModule extends Module implements Listener {
     public ChatClearModule() {
         super(false, false, "chatclear", XMaterial.STRUCTURE_VOID);
         invName = msg.getMessage("gui.chatclear.invName");
+
         gamemodeSelector = Bukkit.createInventory(null, InventoryType.BREWING, invName);
         gamemodeSelector.setItem(0,new ItemBuilder(XMaterial.IRON_BLOCK, msg.getMessage("gui.chatclear.forYou")).build());
         gamemodeSelector.setItem(2,new ItemBuilder(XMaterial.GOLD_BLOCK, msg.getMessage("gui.chatclear.forAll")).build());

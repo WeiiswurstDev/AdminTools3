@@ -6,6 +6,7 @@ import dev.wwst.admintools3.modules.Module;
 import dev.wwst.admintools3.modules.ModuleLoader;
 import dev.wwst.admintools3.util.MessageTranslator;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -52,10 +53,16 @@ public class AdminToolsCommand implements CommandExecutor, Listener {
         if(label.equals("admingui") || label.equals("a") || label.equals("admintools")) {
             if(args.length == 0) {
                 GUIManager.getInstance().openSession(p);
+            } else if(args.length == 1 && "version".equalsIgnoreCase(args[0])) {
+                p.sendMessage(ChatColor.AQUA+"AdminTools3 v"+AdminTools3.getInstance().getDescription().getVersion());
+                p.sendMessage(ChatColor.AQUA+"Author: Weiiswurst");
+                p.sendMessage(ChatColor.AQUA+"Discord: https://discord.gg/YDkQbE7 (Support, Bugreports)");
+                p.sendMessage(ChatColor.AQUA+"Wiki: https://github.com/WeiiswurstDev/AdminTools3/wiki");
+                p.sendMessage(ChatColor.AQUA+"This plugin uses XMaterials and bStats. More info at https://github.com/WeiiswurstDev/AdminTools3");
+                p.sendMessage(ChatColor.AQUA+"Download links are on the Wiki Page as well.");
+                p.sendMessage(ChatColor.GREEN+"Use /a to open the GUI. Use /a <module> [player] [world] or /<module> to execute a module directly.");
             } else if(args.length <= 3) {
                 executeModule(p,args[0], Arrays.copyOfRange(args,1,args.length));
-            } else {
-                p.sendMessage(msg.getMessageAndReplace("chatmessages.syntax",true,p,"/a [<module> [otherPlayer] [world]]"));
             }
         } else {
             executeModule(p,label,args);

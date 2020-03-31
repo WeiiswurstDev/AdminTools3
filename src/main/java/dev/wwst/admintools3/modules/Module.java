@@ -21,9 +21,11 @@ public class Module {
     protected final String name;
     protected final Material material;
 
-    protected final String itemname, itemlore;
+    protected String permissionBase, permissionSelf;
 
-    protected final int cooldown;
+    protected String itemname, itemlore;
+
+    protected int cooldown;
     protected final Map<UUID, Long> onCooldown;
 
     protected final MessageTranslator msg;
@@ -37,6 +39,9 @@ public class Module {
         this.needsPlayer = needsPlayer;
         this.name = name;
         this.material = material.parseMaterial();
+
+        this.permissionBase = "admintools3.module."+name;
+        this.permissionSelf = permissionBase+".self";
 
         this.msg = MessageTranslator.getInstance();
 
@@ -52,18 +57,18 @@ public class Module {
     }
 
     public boolean execute(Player player, Player other, World world) {
-        if(!player.hasPermission("admintools3.module."+name)) { // wenn er sie nicht auf andere oder sich selbst anwenden darf
+        if(!player.hasPermission(permissionBase)) { // wenn er sie nicht auf andere oder sich selbst anwenden darf
             // wird noch überprüft ob er sie auf sich selbst anwenden darf und er sie auf sich selbst anwendet
-            if(player.hasPermission("admintools3.module."+name+".self")) {
+            if(player.hasPermission(permissionSelf)) {
                 if(player.getUniqueId() != other.getUniqueId()) {
-                    player.sendMessage(msg.getMessageAndReplace("chatmessages.noperm",true,player,"admintools3.module."+name));
+                    player.sendMessage(msg.getMessageAndReplace("chatmessages.noperm",true,player,permissionBase));
                     return false;
                 }
             } else {
                 if(player.getUniqueId() != other.getUniqueId()) {
-                    player.sendMessage(msg.getMessageAndReplace("chatmessages.noperm",true,player,"admintools3.module."+name));
+                    player.sendMessage(msg.getMessageAndReplace("chatmessages.noperm",true,player,permissionBase));
                 } else {
-                    player.sendMessage(msg.getMessageAndReplace("chatmessages.noperm",true,player,"admintools3.module."+name+".self"));
+                    player.sendMessage(msg.getMessageAndReplace("chatmessages.noperm",true,player,permissionSelf));
                 }
                 return false;
             }
