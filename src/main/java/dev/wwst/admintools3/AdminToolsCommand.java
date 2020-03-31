@@ -10,15 +10,22 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 
 import java.util.Arrays;
+import java.util.List;
 
-public class AdminToolsCommand implements CommandExecutor {
+public class AdminToolsCommand implements CommandExecutor, Listener {
 
     private final MessageTranslator msg;
+    private final List<String> aliases;
 
     public AdminToolsCommand() {
         msg = MessageTranslator.getInstance();
+        aliases = ModuleLoader.getInstance().getAliases();
+        Bukkit.getPluginManager().registerEvents(this,AdminTools3.getInstance());
     }
 
     @Override
@@ -47,6 +54,22 @@ public class AdminToolsCommand implements CommandExecutor {
         }
 
         return true;
+    }
+
+    @EventHandler
+    public void on(PlayerCommandPreprocessEvent event) {
+        String[] args = event.getMessage().split(" ");
+        String alias = args[0].substring(1); //cut away /
+        if(!aliases.contains(alias)) {
+            return;
+        }
+        event.setCancelled(true);
+        Player p = event.getPlayer();
+        if(!p.hasPermission("admintools3.use")) {
+            p.sendMessage(msg.getMessageAndReplace("chatmessages.noperm",true,p,"admintools3.use"));
+            return;
+        }
+        executeModule(p, alias, Arrays.copyOfRange(args, 1, args.length));
     }
 
     private void executeModule(Player p, String moduleName, String[] args) {

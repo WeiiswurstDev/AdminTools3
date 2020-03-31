@@ -1,6 +1,7 @@
 package dev.wwst.admintools3.modules;
 
 import dev.wwst.admintools3.AdminTools3;
+import dev.wwst.admintools3.util.PlayerDataStorage;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -15,13 +16,14 @@ import java.util.UUID;
 
 public class MuteModule extends Module implements Listener {
 
-    private List<UUID> mutedPlayers;
+    private final List<UUID> mutedPlayers;
+    private final PlayerDataStorage pds;
 
     public MuteModule() {
         super(false, true, "mute", Material.RED_TERRACOTTA);
         useDefaultMessageKeyFormat = false;
-        mutedPlayers = new ArrayList<>();
-        // #TODO Loading/saving of muted players;
+        pds = new PlayerDataStorage("muted.yml");
+        mutedPlayers = pds.getAllData();
 
         Bukkit.getPluginManager().registerEvents(this,AdminTools3.getInstance());
     }
@@ -37,6 +39,7 @@ public class MuteModule extends Module implements Listener {
         }
         if(mutedPlayers.contains(other.getUniqueId())) {
             mutedPlayers.remove(other.getUniqueId());
+            pds.getConfig().set(other.getUniqueId().toString(),false);
             other.sendMessage(msg.getMessage("module.mute.message.toggleOff",true,other));
             if(!other.getName().equals(player.getName())) {
                 other.sendMessage(msg.getMessageAndReplace("module.mute.message.toggledOffByOther",true, player,player.getName()));
@@ -44,6 +47,7 @@ public class MuteModule extends Module implements Listener {
             }
         } else {
             mutedPlayers.add(other.getUniqueId());
+            pds.getConfig().set(other.getUniqueId().toString(),true);
             other.sendMessage(msg.getMessage("module.mute.message.toggleOn",true));
             if(!other.getName().equals(player.getName())) {
                 other.sendMessage(msg.getMessageAndReplace("module.mute.message.toggledOnByOther", true, player,player.getName()));

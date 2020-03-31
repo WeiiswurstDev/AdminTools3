@@ -32,8 +32,8 @@ public class ModuleLoader {
         registerModule(new InvSeeModule());
         registerModule(new VanishModule());
         registerModule(new GamemodeModule());
-
-        adminCommand.setAliases(aliases);
+        registerModule(new ChatClearModule());
+        registerModule(new CommandSpyModule());
 
         AdminTools3.getInstance().getLogger().log(Level.INFO,modules.size()+" modules loaded.");
     }
@@ -52,5 +52,9 @@ public class ModuleLoader {
         }
         modules.add(module);
         aliases.addAll(module.getAliases());
+    }
+
+    public List<String> getAliases() {
+        return aliases;
     }
 }

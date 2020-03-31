@@ -54,6 +54,10 @@ gui:
     creative: "&aCreative"
     adventure: "&aAdventure"
     spectator: "&aSpectator"
+  chatclear:
+    invName: "&bSelect the target"
+    forYou: "&bClear your chat"
+    forAll: "&bClear the chat of all players"
 
 playerInfo:
   explanationIgnoredByPlugin: " -- 'lines' will always be sent.
@@ -69,6 +73,7 @@ playerInfo:
     - "&aHealth: &b%player_health% &7| &aFood: &b%player_food_level%"
     - "&aGamemode: &b%player_gamemode%"
     - "&aHolding item: &b%player_item_in_hand%"
+    - "&aNameMC Profile: https://mine.ly/%player_uuid%"
   optionalBalance: "&aBalance: &b%s"
 
 module:
@@ -125,6 +130,7 @@ module:
       toggledOnForOther: "&b%s &ais now muted."
       toggledOffForOther: "&b%s &acan talk again."
       stillMuted: "&cYou can't talk because you were muted!"
+      bypass: "&cYou may not mute &e%s&c!"
   freeze:
     item:
       name: "&bFreeze"
@@ -137,6 +143,7 @@ module:
       toggledOnForOther: "&b%s &awas frozen."
       toggledOffForOther: "&b%s &acan move again."
       stillMuted: "&cYou can't move because you were frozen!"
+      bypass: "&cYou may not freeze &e%s&c!"
   invsee:
     item:
       name: "&2InvSee"
@@ -168,3 +175,20 @@ module:
       creative: "&aYou are now in Creative mode."
       adventure: "&aYou are now in Adventure mode."
       spectator: "&aYou are now in Spectator mode."
+  chatclear:
+    item:
+      name: "&eClear the Chat"
+      lore: "&7Clear the chat##&7for you or for everyone"
+    message:
+      applyToSelf: "&aSelect if you want to clear the chat for yourself or for everyone."
+      clearedForYou: "&aYou cleared your chat."
+      clearedForAll: "&aYou cleared the chat for everyone."
+      clearedByPlayer: "&aThe chat was cleared by &b%s&a."
+  cmdspy:
+    item:
+      name: "&cCommandSpy"
+      lore: "&7Recieve a message##&7if a user executes##&7a command."
+    message:
+      toggleOn: "&aYou will recieve a message if a user executes a command."
+      toggleOff: "&aYou won't recieve any messages if a user executes a command."
+      commandUsed: "&cCMDSPY &7> &b%s &aexecuted &b%s"

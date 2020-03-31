@@ -42,7 +42,7 @@ public class Module {
         this.itemname = msg.getMessage("module."+name+".item.name");
         this.itemlore = msg.getMessage("module."+name+".item.lore");
 
-        this.cooldown = Configuration.get().getInt("modules."+name+".cooldown");
+        this.cooldown = Configuration.get().getInt("module."+name+".cooldown");
         this.onCooldown = new HashMap<>();
 
         aliases = Configuration.get().getStringList("module."+name+".aliases");

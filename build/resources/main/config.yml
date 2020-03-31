@@ -25,10 +25,12 @@ language: en
 prefix: "&cAdminTools&8│ &7"
 log-module-usage: true
 
-modules:
+module:
   heal:
     fillFoodBar: true
     cooldown: 0
+  chatclear:
+    messageAmount: 100
   enderchest:
     aliases:
       - ec

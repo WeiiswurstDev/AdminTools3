@@ -12,7 +12,7 @@ public class HealModule extends Module {
 
     public HealModule() {
         super(false, true, "heal", Material.GOLDEN_APPLE);
-        fillFoodBar = Configuration.get().getBoolean("modules.heal.fillFoodBar");
+        fillFoodBar = Configuration.get().getBoolean("module.heal.fillFoodBar");
     }
 
     @Override

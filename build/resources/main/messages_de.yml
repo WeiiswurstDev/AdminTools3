@@ -54,6 +54,10 @@ gui:
     creative: "&aKreativ"
     adventure: "&aAbenteuer"
     spectator: "&aZuschauer"
+  chatclear:
+    invName: "&bWähle das Ziel aus"
+    forYou: "&bLeere deinen Chat"
+    forAll: "&bLeere den Chat aller Spieler"
 
 playerInfo:
   explanationIgnoredByPlugin: " -- 'lines' wird immer angezeigt.
@@ -69,6 +73,7 @@ playerInfo:
     - "&aLeben: &b%player_health% &7| &aEssen: &b%player_food_level%"
     - "&aSpielmodus: &b%player_gamemode%"
     - "&aItem in der Hand: &b%player_item_in_hand%"
+    - "&aNameMC-Profil: https://mine.ly/%player_uuid%"
   optionalBalance: "&aKontostand: &b%s"
 
 module:
@@ -125,6 +130,7 @@ module:
       toggledOnForOther: "&b%s &aist jetzt stumm."
       toggledOffForOther: "&b%s &akann wieder reden."
       stillMuted: "&cDu kannst nicht reden, weil du stummgeschaltet wurdest!"
+      bypass: "&cDu kannst &e%s &cnicht stummschalten!"
   freeze:
     item:
       name: "&bEinfrieren"
@@ -137,6 +143,7 @@ module:
       toggledOnForOther: "&b%s &aist jetzt eingefroren."
       toggledOffForOther: "&b%s &akann sich wieder bewegen."
       stillMuted: "&cDu bist eingefroren und kannst dich daher nicht bewegen!"
+      bypass: "&cDu kannst &e%s &cnicht einfrieren!"
   invsee:
     item:
       name: "&2InventarSpion"
@@ -168,3 +175,20 @@ module:
       creative: "&aDu bist jetzt im Kreativmodus (Creative)."
       adventure: "&aDu bist jetzt im Abenteuermodus (Adventure)."
       spectator: "&aDu bist jetzt im Zuschauermodus (Spectator)."
+  chatclear:
+    item:
+      name: "&eChat leeren"
+      lore: "&7Leere den Chat##&7für dich oder für alle"
+    message:
+      applyToSelf: "&aWähle aus, ob du den Chat für dich oder für alle leeren willst."
+      clearedForYou: "&aDu hast deinen Chat geleert."
+      clearedForAll: "&aDu hast den Chat für alle geleert."
+      clearedByPlayer: "&aDer Chat wurde von &b%s &ageleert."
+  cmdspy:
+    item:
+      name: "&cBefehls-Spion"
+      lore: "&7Erhalte eine Nachricht##&7wenn ein Spieler einen##&7Befehl ausführt."
+    message:
+      toggleOn: "&aWenn ein Spieler einen Befehl ausführt, wirst du nun benachrichtigt."
+      toggleOff: "&aWenn ein Spieler einen Befehl ausführt, wirst du nicht mehr benachrichtigt."
+      commandUsed: "&cCMDSPY &7> &b%s &ahat &b%s &aausgeführt."
