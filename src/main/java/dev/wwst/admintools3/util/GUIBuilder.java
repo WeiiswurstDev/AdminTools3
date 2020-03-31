@@ -15,8 +15,6 @@ public class GUIBuilder {
         msg = MessageTranslator.getInstance();
     }
 
-    // 0 1 2 3 4 5 6 7 8
-
     public GUIBuilder fill(ItemStack item) {
         for(int slot = 0; slot < inv.getSize(); slot++) {
             inv.setItem(slot,item);

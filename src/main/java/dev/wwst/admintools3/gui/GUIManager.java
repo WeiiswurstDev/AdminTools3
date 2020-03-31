@@ -96,7 +96,7 @@ public class GUIManager {
         int rows = Bukkit.getOnlinePlayers().size()/9+1;
         if(rows > 6) {
             rows = 6;
-            p.sendMessage(msg.getMessageAndReplace("chatmessages.tooManyPlayers",true, Bukkit.getOnlinePlayers().size()+""));
+            p.sendMessage(msg.getMessageAndReplace("chatmessages.tooManyPlayers",true, p,Bukkit.getOnlinePlayers().size()+""));
         }
 
         GUIBuilder menu = new GUIBuilder(playerSelectorInvName, rows);
@@ -118,7 +118,7 @@ public class GUIManager {
         int rows= Bukkit.getWorlds().size()/9+1;
         if(rows > 6) {
             rows = 6;
-            p.sendMessage(msg.getMessageAndReplace("chatmessages.tooManyWorlds",true, Bukkit.getWorlds().size()+""));
+            p.sendMessage(msg.getMessageAndReplace("chatmessages.tooManyWorlds",true, p,Bukkit.getWorlds().size()+""));
         }
 
         GUIBuilder menu = new GUIBuilder(worldSelectorInvName, rows);

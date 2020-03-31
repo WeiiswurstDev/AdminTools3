@@ -8,6 +8,7 @@ api-version: "1.13"
 softdepend:
   - ProtocolLib
   - Vault
+  - PlaceholderAPI
 
 commands:
   admingui:
@@ -16,3 +17,23 @@ commands:
     aliases:
       - a
       - admintools
+  playerinfo:
+    description: Show information about the player in the chat
+    usage: /pinfo <player>
+    aliases:
+      - pinfo
+
+
+permissions:
+  admintools3.use:
+    description: Required for /a
+  admintools3.playerinfo:
+    description: Required for /pinfo, this works without admintools3.use
+  admintools3.bypass.cooldown:
+    description: Bypass Module cooldowns. admintools3.bypass.cooldown.<modulename> to bypass individual cooldowns.
+  admintools3.bypass.freeze:
+    description: You cannot be freezed anymore.
+  admintools3.bypass.mute:
+    description: You cannot be muted anymore.
+  admintools3.bypass.vanish:
+    description: You can see players that are in vanish mode.

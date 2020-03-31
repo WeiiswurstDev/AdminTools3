@@ -20,6 +20,21 @@ chatmessages:
   tooManyPlayers: "&cDa nur &e54 &cSpieler in die GUI passen, aber &e%s &conline sind, musst du diese Spieler direkt im /a-Befehl auswählen!"
   tooManyWorlds: "&cDa nur &e54 &cWelten in die GUI passen, aber &e%s &cgeladen sind, musst du diese Welten direkt im /a-Befehl auswählen!"
   playerOnlyCommand: "Diesen Befehl kannst du nur Ingame benutzen!"
+  protocolLibNotFound: >
+    !!! Das Plugin PROTOCOLLIB konnte nicht gefunden werden.
+    Das bedeutet, dass Text in der ACTIONBAR stattdessen im Chat angezeigt wird.
+    Installiere ProtocolLib, um das zu beheben !!!
+  papiNotFound: >
+    !!! PlaceholderAPI konnte nicht gefunden werden.
+    Das bedeutet, dass du im Text von /pinfo keine Placeholders von PAPI nutzen kannst !!!
+  vaultNotFound: >
+    !!! Das Plugin VAULT konnte nicht gefunden werden.
+    Das bedeutet, dass AdminTools den Kontostand der Mitglieder nicht auslesen kann.
+    Um den Kontostand der Spieler in /pinfo anzeigen zu lassen, installiere Vault und ein WirtschaftsSystem (z.B. EssentialsX). !!!
+  economyNotFound: >
+    !!! Es konnte kein Wirtschaftssystem gefunden werden.
+    Wenn du ein Wirtschaftssystem, z.B. EssentialsX, installierst, kann /pinfo auch den Kontostand der Spieler anzeigen !!!
+  economyFound: "AdminTools hat sich mit deinem Wirtschaftssystem %s verbunden."
 
 gui:
   moduleSelector:
@@ -40,6 +55,21 @@ gui:
     adventure: "&aAbenteuer"
     spectator: "&aZuschauer"
 
+playerInfo:
+  explanationIgnoredByPlugin: " -- 'lines' wird immer angezeigt.
+  optionalBalance nur wenn ein Wirtschaftssystem insstalliert ist.
+  Du kannst so viele Nachrichten wie du willst hinzufügen und die Reihenfolge beliebig ändern.
+  Wenn du PlaceholderAPI installiert hast, kannst du hier alles von PlaceholderAPI nutzen.
+  Wenn du PAPI NICHT installiert hast, kannst du diese placeholders nutzen: player_name,player_displayname,player_uuid,player_health,player_food_level,player_gamemode,player_item_in_hand
+  Diese Nachricht wird vom Plugin ignoriert und ist nur zur Erklärung der Config da --"
+  lines:
+    - "&aInfos über &b%player_name%\n"
+    - "&aAnzeigename: &b%player_displayname%"
+    - "&aUUID: &b%player_uuid%"
+    - "&aLeben: &b%player_health% &7| &aEssen: &b%player_food_level%"
+    - "&aSpielmodus: &b%player_gamemode%"
+    - "&aItem in der Hand: &b%player_item_in_hand%"
+  optionalBalance: "&aKontostand: &b%s"
 
 module:
   heal:

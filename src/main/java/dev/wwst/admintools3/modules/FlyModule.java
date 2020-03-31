@@ -17,10 +17,10 @@ public class FlyModule extends Module {
         }
         if(other.getAllowFlight()) {
             other.setAllowFlight(false);
-            other.sendMessage(msg.getMessage("module.fly.toggleOff",true));
+            other.sendMessage(msg.getMessage("module.fly.toggleOff",true,player));
         } else {
             other.setAllowFlight(true);
-            other.sendMessage(msg.getMessage("module.fly.toggleOn",true));
+            other.sendMessage(msg.getMessage("module.fly.toggleOn",true,player));
         }
         return true;
     }

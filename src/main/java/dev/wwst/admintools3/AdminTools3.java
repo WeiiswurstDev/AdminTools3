@@ -2,11 +2,13 @@ package dev.wwst.admintools3;
 
 import dev.wwst.admintools3.gui.GUIManager;
 import dev.wwst.admintools3.modules.ModuleLoader;
+import dev.wwst.admintools3.util.Metrics;
 import dev.wwst.admintools3.util.Configuration;
 import dev.wwst.admintools3.util.MessageTranslator;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.concurrent.Callable;
 import java.util.logging.Level;
 
 public final class AdminTools3 extends JavaPlugin {
@@ -26,17 +28,20 @@ public final class AdminTools3 extends JavaPlugin {
         new GUIManager();
 
         getCommand("admingui").setExecutor(new AdminToolsCommand());
+        getCommand("playerinfo").setExecutor(new PlayerInfoCommand());
 
         if(!Bukkit.getPluginManager().isPluginEnabled("ProtocolLib")) {
-            getLogger().log(Level.WARNING, "!! ProtocolLib is not installed.");
-            getLogger().log(Level.WARNING, "!! AdminTools will run just fine, however, you lose support for ActionBars.");
-            getLogger().log(Level.WARNING, "!! Download ProtocolLib here: https://www.spigotmc.org/resources/protocollib.1997/");
+            getLogger().log(Level.WARNING, MessageTranslator.getInstance().getMessage("chatmessages.protocolLibNotFound"));
         }
+
+        Metrics metrics = new Metrics(this, 6930);
+
+        metrics.addCustomChart(new Metrics.SimplePie("used_language", () -> Configuration.get().getString("language","en")));
     }
 
     @Override
     public void onDisable() {
-
+        getLogger().log(Level.INFO, "AdminTools3 was disabled.");
     }
 
     public static AdminTools3 getInstance() {

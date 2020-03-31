@@ -50,19 +50,19 @@ public class GamemodeModule extends Module implements Listener {
         switch(event.getCurrentItem().getType()) {
             case IRON_PICKAXE:
                 player.setGameMode(GameMode.SURVIVAL);
-                player.sendMessage(msg.getMessage("module.gm.message.survival"));
+                player.sendMessage(msg.getMessage("module.gm.message.survival",true,player));
                 break;
             case BEACON:
                 player.setGameMode(GameMode.CREATIVE);
-                player.sendMessage(msg.getMessage("module.gm.message.creative"));
+                player.sendMessage(msg.getMessage("module.gm.message.creative",true,player));
                 break;
             case WOODEN_SWORD:
                 player.setGameMode(GameMode.ADVENTURE);
-                player.sendMessage(msg.getMessage("module.gm.message.adventure"));
+                player.sendMessage(msg.getMessage("module.gm.message.adventure",true,player));
                 break;
             case FEATHER:
                 player.setGameMode(GameMode.SPECTATOR);
-                player.sendMessage(msg.getMessage("module.gm.message.spectator"));
+                player.sendMessage(msg.getMessage("module.gm.message.spectator",true,player));
                 break;
             default:
                 break;

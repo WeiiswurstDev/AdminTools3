@@ -30,7 +30,7 @@ public class FreezeModule extends Module implements Listener {
     @Override
     public boolean execute(Player player, Player other, World world) {
         if(other.hasPermission("admintools3.bypass.freeze")) {
-            player.sendMessage(msg.getMessageAndReplace("module.freeze.bypass",true, other.getName()));
+            player.sendMessage(msg.getMessageAndReplace("module.freeze.bypass",true, player,other.getName()));
             return false;
         }
         if(!super.execute(player, other, world)) {
@@ -38,17 +38,17 @@ public class FreezeModule extends Module implements Listener {
         }
         if(frozenPlayers.contains(other.getUniqueId())) {
             frozenPlayers.remove(other.getUniqueId());
-            other.sendMessage(msg.getMessage("module.freeze.message.toggleOff",true));
+            other.sendMessage(msg.getMessage("module.freeze.message.toggleOff",true,other));
             if(!other.getName().equals(player.getName())) {
-                other.sendMessage(msg.getMessageAndReplace("module.freeze.message.toggledOffByOther",true, player.getName()));
-                player.sendMessage(msg.getMessageAndReplace("module.freeze.message.toggledOffForOther",true, other.getName()));
+                other.sendMessage(msg.getMessageAndReplace("module.freeze.message.toggledOffByOther",true, player, player.getName()));
+                player.sendMessage(msg.getMessageAndReplace("module.freeze.message.toggledOffForOther",true, player, other.getName()));
             }
         } else {
             frozenPlayers.add(other.getUniqueId());
-            other.sendMessage(msg.getMessage("module.freeze.message.toggleOn",true));
+            other.sendMessage(msg.getMessage("module.freeze.message.toggleOn",true, other));
             if(!other.getName().equals(player.getName())) {
-                other.sendMessage(msg.getMessageAndReplace("module.freeze.message.toggledOnByOther", true, player.getName()));
-                player.sendMessage(msg.getMessageAndReplace("module.freeze.message.toggledOnForOther",true, other.getName()));
+                other.sendMessage(msg.getMessageAndReplace("module.freeze.message.toggledOnByOther", true, player, player.getName()));
+                player.sendMessage(msg.getMessageAndReplace("module.freeze.message.toggledOnForOther",true, player, other.getName()));
             }
         }
         return true;
@@ -58,7 +58,7 @@ public class FreezeModule extends Module implements Listener {
     public void move(PlayerMoveEvent event) {
         if(frozenPlayers.contains(event.getPlayer().getUniqueId())) {
             event.setTo(event.getFrom());
-            event.getPlayer().sendMessage(msg.getMessage("module.freeze.message.stillFrozen",true));
+            event.getPlayer().sendMessage(msg.getMessage("module.freeze.message.stillFrozen",true,event.getPlayer()));
         }
     }
 

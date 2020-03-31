@@ -20,6 +20,21 @@ chatmessages:
   tooManyPlayers: "&There are &e%s&c players online, but only &e54&c fit in the GUI. You have to use the /a <module> [player] [world] to select those."
   tooManyWorlds: "&There are &e%s&c worlds, but only &e54&c fit in the GUI. You have to use the /a <module> [player] [world] to select those."
   playerOnlyCommand: "You may only use this command as a player."
+  protocolLibNotFound: >
+    !!! The plugin PROTOCOLLIB could not be found.
+    This means that the ACTIONBAR will be sent to chat instead.
+    Install ProtocolLib to fix this !!!
+  papiNotFound: >
+    !!! PlaceholderAPI could not be found.
+    This means that you can't use PAPI placeholders in message files anymore. !!!
+  vaultNotFound: >
+    !!! The plugin VAULT coult not be found.
+    This means that AdminTools3 is not able to read player balanced anymore.
+    If you want to see your players balance in /pinfo, install Vault and an Economy plugin (e.g. EssentialsX). !!!
+  economyNotFound: >
+    !!! No economy plugin could be found.
+    If you install an economy plugin, e.g. EssentialsX, /pinfo will show player balances as well. !!!
+  economyFound: "AdminTools could establish a connection to your Economy plugin named %s."
 
 gui:
   moduleSelector:
@@ -40,11 +55,26 @@ gui:
     adventure: "&aAdventure"
     spectator: "&aSpectator"
 
+playerInfo:
+  explanationIgnoredByPlugin: " -- 'lines' will always be sent.
+  optionalBalance will only be sent if an economy plugin and Vault is installed.
+  You may send as many messages as you want, in any order.
+  If you installed PlaceholderAPI, you can use any PAPI placeholders in here.
+  Without PAPI, you can use these placeholders in 'lines': player_name,player_displayname,player_uuid,player_health,player_food_level,player_gamemode,player_item_in_hand
+  This message will be ignored by the plugin and is just present for information. --"
+  lines:
+    - "&aInformation about &b%player_name%\n"
+    - "&aDisplayname: &b%player_displayname%"
+    - "&aUUID: &b%player_uuid%"
+    - "&aHealth: &b%player_health% &7| &aFood: &b%player_food_level%"
+    - "&aGamemode: &b%player_gamemode%"
+    - "&aHolding item: &b%player_item_in_hand%"
+  optionalBalance: "&aBalance: &b%s"
 
 module:
   heal:
     item:
-      name: "&4Heak"
+      name: "&4Heal"
       lore: "&7Heal yourself ##&7or someone else"
     message:
       applyToOther: "&aYou healed &b%s."

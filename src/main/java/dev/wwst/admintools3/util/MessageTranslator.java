@@ -1,8 +1,11 @@
 package dev.wwst.admintools3.util;
 
 import dev.wwst.admintools3.AdminTools3;
+import me.clip.placeholderapi.PlaceholderAPI;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 
 import java.io.File;
 import java.util.HashMap;
@@ -21,6 +24,8 @@ public class MessageTranslator {
     private AdminTools3 plugin;
     private String language;
     private String prefix;
+    private YamlConfiguration cfg;
+    private boolean papiEnabled = true;
 
     private HashMap<String, String> messages;
 
@@ -44,12 +49,17 @@ public class MessageTranslator {
 
             languageFile =new File(plugin.getConfigFolderPath(), "messages_en.yml");
         }
-        YamlConfiguration cfg = YamlConfiguration.loadConfiguration(languageFile);
+        cfg = YamlConfiguration.loadConfiguration(languageFile);
         Map<String, Object> values = cfg.getValues(true);
         for(String key : values.keySet()) {
             messages.put(key, values.get(key).toString());
         }
         plugin.getLogger().log(Level.INFO, "Language loaded: messages_"+language+".yml");
+
+        if(!Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
+            plugin.getLogger().log(Level.WARNING, getMessage("chatmessages.papiNotFound"));
+            papiEnabled = false;
+        }
     }
 
     // Loading custom language files for addons
@@ -74,11 +84,14 @@ public class MessageTranslator {
         }
     }
 
-    public String getMessageAndReplace(String key, boolean addPrefix, String... replacements) {
+    public String getMessageAndReplace(String key, boolean addPrefix, Player player, String... replacements) {
         if(!messages.containsKey(key)) {
             return ChatColor.YELLOW+key+ ChatColor.RED +" not found!";
         }
         String message = messages.get(key);
+        if(papiEnabled) {
+            message = PlaceholderAPI.setPlaceholders(player,message);
+        }
         for(int i = 0; message.contains("%s") && replacements != null; i++) {
             if(replacements.length <= i) {
                 message = message.replaceFirst("%s", "&cNO REPLACEMENT");
@@ -93,12 +106,28 @@ public class MessageTranslator {
         return ChatColor.translateAlternateColorCodes('&', message);
     }
 
+    public String getMessage(String key, boolean addPrefix, Player player) {
+        return getMessageAndReplace(key,addPrefix, player,"");
+    }
+
     public String getMessage(String key, boolean addPrefix) {
-        return getMessageAndReplace(key,addPrefix, "");
+        return getMessageAndReplace(key,addPrefix, null,"");
     }
 
     public String getMessage(String key) {
-        return getMessageAndReplace(key,false,"");
+        return getMessageAndReplace(key,false,null,"");
+    }
+
+    public YamlConfiguration getConfiguration() {
+        return cfg;
+    }
+
+    public boolean isPapiEnabled() {
+        return papiEnabled;
+    }
+
+    public String getLanguage() {
+        return language;
     }
 
     public static MessageTranslator getInstance() {

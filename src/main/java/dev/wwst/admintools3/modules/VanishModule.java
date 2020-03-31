@@ -35,7 +35,7 @@ public class VanishModule extends Module implements Listener {
         }
         if(vanishedPlayers.contains(other.getUniqueId())) {
             vanishedPlayers.remove(other.getUniqueId());
-            other.sendMessage(msg.getMessage("module.vanish.message.toggleOff",true));
+            other.sendMessage(msg.getMessage("module.vanish.message.toggleOff",true, player));
 
             for(Player p : Bukkit.getOnlinePlayers()) {
                 p.showPlayer(plugin,other);
@@ -43,7 +43,7 @@ public class VanishModule extends Module implements Listener {
 
         } else {
             vanishedPlayers.add(other.getUniqueId());
-            other.sendMessage(msg.getMessage("module.vanish.message.toggleOn",true));
+            other.sendMessage(msg.getMessage("module.vanish.message.toggleOn",true,player));
 
             for(Player p : Bukkit.getOnlinePlayers()) {
                 if(!p.hasPermission("admintools3.vanish.bypass"))

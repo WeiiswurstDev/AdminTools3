@@ -39,7 +39,7 @@ public class GUISession implements Listener {
 
         if(e.getCurrentItem() == null || e.getCurrentItem().getItemMeta() == null) return;
 
-        if(MessageTranslator.getInstance().getMessage("gui.moduleSelector.invName").equals(e.getView().getTitle())) {
+        if(MessageTranslator.getInstance().getMessage("gui.moduleSelector.invName",false,player).equals(e.getView().getTitle())) {
             for(Module m : ModuleLoader.getInstance().getModuleList()) {
                 if(e.getCurrentItem().getItemMeta().getDisplayName().equals(m.getItemname())) {
                     selected = m;
@@ -57,7 +57,7 @@ public class GUISession implements Listener {
                                 selected.execute(player, player, null);
                             }
                         } else {
-                            player.sendMessage(MessageTranslator.getInstance().getMessageAndReplace("chatmessages.noperm",true,"admintools3.module."+m.getName()+".self"));
+                            player.sendMessage(MessageTranslator.getInstance().getMessageAndReplace("chatmessages.noperm",true,player,"admintools3.module."+m.getName()+".self"));
                             player.closeInventory();
                         }
                     // Rechtsclick - Auf ANDERE ausführen
@@ -67,7 +67,7 @@ public class GUISession implements Listener {
                             player.openInventory(GUIManager.getInstance().generatePlayerSelector(player));
                             closed = false;
                         } else {
-                            //player.sendMessage(MessageTranslator.getInstance().getMessageAndReplace("chatmessages.noperm",true,"admintools3.module."+m.getName()));
+                            //player.sendMessage(MessageTranslator.getInstance().getMessageAndReplace("chatmessages.noperm",true,player,"admintools3.module."+m.getName()));
                             player.closeInventory();
                             selected.execute(player, player, null);
                         }
@@ -76,7 +76,7 @@ public class GUISession implements Listener {
                     }
                 }
             }
-        } else if(MessageTranslator.getInstance().getMessage("gui.playerSelector.invName").equals(e.getView().getTitle())) {
+        } else if(MessageTranslator.getInstance().getMessage("gui.playerSelector.invName",false,player).equals(e.getView().getTitle())) {
             if(e.getCurrentItem().getType() != Material.PLAYER_HEAD) return;
             SkullMeta clickedMeta = (SkullMeta) e.getCurrentItem().getItemMeta();
             selectedPlayer = Bukkit.getPlayer(clickedMeta.getOwningPlayer().getUniqueId());
@@ -88,7 +88,7 @@ public class GUISession implements Listener {
                 player.closeInventory();
                 selected.execute(player,selectedPlayer,null);
             }
-        } else if(MessageTranslator.getInstance().getMessage("gui.worldSelector.invName").equals(e.getView().getTitle())) {
+        } else if(MessageTranslator.getInstance().getMessage("gui.worldSelector.invName",false,player).equals(e.getView().getTitle())) {
             String name = e.getCurrentItem().getItemMeta().getDisplayName();
             for(World w : Bukkit.getWorlds()) {
                 if(w.getName().equals(name.substring(2))) {
