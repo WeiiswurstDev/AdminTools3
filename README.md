@@ -3,7 +3,7 @@ A general purpose Craftbukkit+ Plugin
 
 BukkitDEV: https://dev.bukkit.org/projects/admintoolsde
 
-SpigotMC: (adding this as soon as I have a link)
+SpigotMC: https://www.spigotmc.org/resources/admintools.76747/
 
 bStats: https://bstats.org/plugin/bukkit/AdminToolsDE/6930
 
