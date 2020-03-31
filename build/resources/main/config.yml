@@ -7,6 +7,9 @@
 ###
 ### The cooldown is in SECONDS, so cooldown:1 means a cooldown of 1 second!
 ###
+### You can add any command to any module by using commandAlias
+### e.g. /wb is a synonym for /workbench and for /a wb and for /a workbench
+###
 ###  --- DEUTSCH ---
 ### Diese Datei ist ausschließlich für die Konfiguration gedacht.
 ### Um Nachrichten zu ändern, kopiere messages_de.yml und ändere de in das Kürzel der Sprache. Ändere auch hier "language" zu dem Kürzel der Sprache.
@@ -14,6 +17,9 @@
 ###
 ### Der Cooldown wird in Sekunden angegeben: cooldown:1 heist 1 Sekunde Cooldown!
 ###
+### Du kannst jedem Modul weitere Befehle (Aliase) geben
+### z.B. /wb ist ein Synonym von /workbench, /a wb und /a workbench
+### Damit kannst du allen Modulen auch deutsche Befehle geben!
 
 language: en
 prefix: "&cAdminTools&8│ &7"
@@ -23,3 +29,12 @@ modules:
   heal:
     fillFoodBar: true
     cooldown: 0
+  enderchest:
+    aliases:
+      - ec
+  workbench:
+    aliases:
+      - wb
+  invsee:
+    aliases:
+      - invspy
