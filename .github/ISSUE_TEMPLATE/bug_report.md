@@ -36,7 +36,7 @@ How to reproduce:
 
 
 Checklist:
-<-- Enter an X in the brackets if the statement is true for you bugreport. -->
+<!-- Enter an X in the brackets if the statement is true for you bugreport. -->
 [] I answered all questions
 [] I use the newest version of AdminTools.
 [] The bug is caused by AdminTools and not any other plugin or the server.
