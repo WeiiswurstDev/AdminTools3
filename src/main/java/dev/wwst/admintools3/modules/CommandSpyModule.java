@@ -3,6 +3,7 @@ package dev.wwst.admintools3.modules;
 import com.google.common.collect.Lists;
 import dev.wwst.admintools3.AdminTools3;
 import dev.wwst.admintools3.util.PlayerDataStorage;
+import dev.wwst.admintools3.util.XMaterial;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -20,7 +21,7 @@ public class CommandSpyModule extends Module implements Listener {
     private final PlayerDataStorage pds;
 
     public CommandSpyModule() {
-        super(false, false, "cmdspy", Material.COMMAND_BLOCK);
+        super(false, false, "cmdspy", XMaterial.COMMAND_BLOCK);
         useDefaultMessageKeyFormat = false;
         pds = new PlayerDataStorage("commandspy.yml");
         commandSpyEnabled = pds.getAllData();

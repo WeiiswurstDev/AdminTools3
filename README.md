@@ -53,3 +53,6 @@ The review section is NOT the place to report bugs or suggest features!
 * Use modular features such as the PlayerSelector or the WorldSelector
 
 The API, and examples, are in the Wiki.
+## Credits
+* XMaterial for Compatibility (https://www.spigotmc.org/threads/xseries-xmaterial-xparticle-xsound-xpotion-titles-actionbar-etc.378136/)
+* bstats Metrics (https://bstats.org/)

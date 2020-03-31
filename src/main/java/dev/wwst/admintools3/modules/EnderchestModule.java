@@ -1,5 +1,6 @@
 package dev.wwst.admintools3.modules;
 
+import dev.wwst.admintools3.util.XMaterial;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
@@ -8,7 +9,7 @@ public class EnderchestModule extends Module {
 
 
     public EnderchestModule() {
-        super(false, true, "enderchest", Material.ENDER_CHEST);
+        super(false, true, "enderchest", XMaterial.ENDER_CHEST);
     }
 
     @Override

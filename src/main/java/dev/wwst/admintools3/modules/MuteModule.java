@@ -2,6 +2,7 @@ package dev.wwst.admintools3.modules;
 
 import dev.wwst.admintools3.AdminTools3;
 import dev.wwst.admintools3.util.PlayerDataStorage;
+import dev.wwst.admintools3.util.XMaterial;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -20,7 +21,7 @@ public class MuteModule extends Module implements Listener {
     private final PlayerDataStorage pds;
 
     public MuteModule() {
-        super(false, true, "mute", Material.RED_TERRACOTTA);
+        super(false, true, "mute", XMaterial.RED_TERRACOTTA);
         useDefaultMessageKeyFormat = false;
         pds = new PlayerDataStorage("muted.yml");
         mutedPlayers = pds.getAllData();

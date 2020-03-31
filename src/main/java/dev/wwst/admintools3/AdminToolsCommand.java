@@ -1,5 +1,6 @@
 package dev.wwst.admintools3;
 
+import com.google.common.collect.Lists;
 import dev.wwst.admintools3.gui.GUIManager;
 import dev.wwst.admintools3.modules.Module;
 import dev.wwst.admintools3.modules.ModuleLoader;
@@ -13,6 +14,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
+import org.bukkit.event.player.PlayerCommandSendEvent;
 
 import java.util.Arrays;
 import java.util.List;
@@ -21,10 +23,16 @@ public class AdminToolsCommand implements CommandExecutor, Listener {
 
     private final MessageTranslator msg;
     private final List<String> aliases;
+    private final List<String> aliasesWithSlash;
 
     public AdminToolsCommand() {
         msg = MessageTranslator.getInstance();
         aliases = ModuleLoader.getInstance().getAliases();
+        aliasesWithSlash = Lists.newArrayListWithCapacity(aliases.size());
+        for(String alias : aliases) {
+            aliasesWithSlash.add("/"+alias);
+            aliasesWithSlash.add("/admintools3:"+alias);
+        }
         Bukkit.getPluginManager().registerEvents(this,AdminTools3.getInstance());
     }
 
@@ -57,7 +65,7 @@ public class AdminToolsCommand implements CommandExecutor, Listener {
     }
 
     @EventHandler
-    public void on(PlayerCommandPreprocessEvent event) {
+    public void aliasListener(PlayerCommandPreprocessEvent event) {
         String[] args = event.getMessage().split(" ");
         String alias = args[0].substring(1); //cut away /
         if(!aliases.contains(alias)) {
@@ -70,6 +78,13 @@ public class AdminToolsCommand implements CommandExecutor, Listener {
             return;
         }
         executeModule(p, alias, Arrays.copyOfRange(args, 1, args.length));
+    }
+
+    @EventHandler
+    public void onSend(PlayerCommandSendEvent event) {
+        System.out.println(event.getCommands().size());
+        event.getCommands().addAll(aliasesWithSlash);
+        System.out.println(event.getCommands().size());
     }
 
     private void executeModule(Player p, String moduleName, String[] args) {

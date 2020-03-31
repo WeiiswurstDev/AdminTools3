@@ -6,6 +6,7 @@ import dev.wwst.admintools3.modules.Module;
 import dev.wwst.admintools3.modules.ModuleLoader;
 import dev.wwst.admintools3.util.GUIBuilder;
 import dev.wwst.admintools3.util.ItemBuilder;
+import dev.wwst.admintools3.util.XMaterial;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -73,9 +74,9 @@ public class GUIManager {
             Module m = modules.getModuleList().get(slot);
             ItemBuilder item;
             if(p.hasPermission("admintools3.module."+m.getName()) || p.hasPermission("admintools3.module."+m.getName()+".self")) {
-                item = new ItemBuilder(m.getMaterial());
+                item = new ItemBuilder(XMaterial.matchXMaterial(m.getMaterial()));
             } else {
-                item = new ItemBuilder(Material.BARRIER);
+                item = new ItemBuilder(XMaterial.BARRIER);
                 item.addLore(nopermLore);
             }
             item.setName(m.getItemname());
@@ -105,7 +106,7 @@ public class GUIManager {
         onlineList = Bukkit.getOnlinePlayers().toArray(onlineList);
         for(int slot = 0; slot < onlineList.length; slot++) {
             Player x = onlineList[slot];
-            ItemStack i = new ItemBuilder(Material.PLAYER_HEAD, x.getName()).addLore(playerSelectorItemLore).build();
+            ItemStack i = new ItemBuilder(XMaterial.PLAYER_HEAD, x.getName()).addLore(playerSelectorItemLore).build();
             SkullMeta meta = (SkullMeta) i.getItemMeta();
             meta.setOwningPlayer(x);
             i.setItemMeta(meta);
@@ -125,9 +126,9 @@ public class GUIManager {
         menu.fill(ItemBuilder.WHITEPANE);
         for(int slot = 0; slot < Bukkit.getWorlds().size(); slot++) {
             World w = Bukkit.getWorlds().get(slot);
-            Material m = Material.GRASS;
-            if(w.getName().contains("nether")) m = Material.NETHERRACK;
-            else if(w.getName().contains("the_end")) m = Material.END_STONE;
+            XMaterial m = XMaterial.GRASS;
+            if(w.getName().contains("nether")) m = XMaterial.NETHERRACK;
+            else if(w.getName().contains("the_end")) m = XMaterial.END_STONE;
             menu.setItem(slot, new ItemBuilder(m, "§a"+w.getName()).addLore(worldSelectorItemLore).build());
         }
         return menu.build();

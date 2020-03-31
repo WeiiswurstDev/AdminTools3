@@ -1,16 +1,16 @@
 package dev.wwst.admintools3.modules;
 
+import dev.wwst.admintools3.util.Configuration;
 import dev.wwst.admintools3.util.XMaterial;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.World;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
-import org.bukkit.event.inventory.InventoryType;
 
-public class WorkbenchModule extends Module {
+public class MaxHeartsModule extends Module{
 
-    public WorkbenchModule() {
-        super(false, false, "workbench", XMaterial.CRAFTING_TABLE);
+    public MaxHeartsModule() {
+        super(false, true, "heal", XMaterial.ENCHANTED_GOLDEN_APPLE);
     }
 
     @Override
@@ -18,8 +18,7 @@ public class WorkbenchModule extends Module {
         if(!super.execute(player, other, world)) {
             return false;
         }
-        player.openInventory(Bukkit.createInventory(player, InventoryType.WORKBENCH));
+        other.setHealth(other.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
         return true;
     }
-
 }

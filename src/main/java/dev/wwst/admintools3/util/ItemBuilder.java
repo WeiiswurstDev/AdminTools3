@@ -16,17 +16,17 @@ public class ItemBuilder {
     public static ItemStack WHITEPANE;
 
     static {
-        WHITEPANE = new ItemBuilder(Material.WHITE_STAINED_GLASS_PANE, " ").build();
+        WHITEPANE = new ItemBuilder(XMaterial.WHITE_STAINED_GLASS_PANE, " ").build();
     }
 
-    public ItemBuilder(Material m, String name) {
-        i = new ItemStack(m);
+    public ItemBuilder(XMaterial m, String name) {
+        i = new ItemStack(m.parseMaterial());
         im = i.getItemMeta();
         im.setDisplayName(name);
     }
 
-    public ItemBuilder(Material m) {
-        i = new ItemStack(m);
+    public ItemBuilder(XMaterial m) {
+        i = new ItemStack(m.parseMaterial());
         im = i.getItemMeta();
     }
 

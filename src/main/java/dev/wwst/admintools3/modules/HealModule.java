@@ -1,6 +1,7 @@
 package dev.wwst.admintools3.modules;
 
 import dev.wwst.admintools3.util.Configuration;
+import dev.wwst.admintools3.util.XMaterial;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.attribute.Attribute;
@@ -11,7 +12,7 @@ public class HealModule extends Module {
     private final boolean fillFoodBar;
 
     public HealModule() {
-        super(false, true, "heal", Material.GOLDEN_APPLE);
+        super(false, true, "heal", XMaterial.GOLDEN_APPLE);
         fillFoodBar = Configuration.get().getBoolean("module.heal.fillFoodBar");
     }
 

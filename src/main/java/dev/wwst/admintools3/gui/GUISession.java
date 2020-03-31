@@ -4,6 +4,7 @@ import dev.wwst.admintools3.AdminTools3;
 import dev.wwst.admintools3.modules.Module;
 import dev.wwst.admintools3.modules.ModuleLoader;
 import dev.wwst.admintools3.util.MessageTranslator;
+import dev.wwst.admintools3.util.XMaterial;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -77,7 +78,7 @@ public class GUISession implements Listener {
                 }
             }
         } else if(MessageTranslator.getInstance().getMessage("gui.playerSelector.invName",false,player).equals(e.getView().getTitle())) {
-            if(e.getCurrentItem().getType() != Material.PLAYER_HEAD) return;
+            if(e.getCurrentItem().getType() != XMaterial.PLAYER_HEAD.parseMaterial()) return;
             SkullMeta clickedMeta = (SkullMeta) e.getCurrentItem().getItemMeta();
             selectedPlayer = Bukkit.getPlayer(clickedMeta.getOwningPlayer().getUniqueId());
             if(selected.needsWorld()) {

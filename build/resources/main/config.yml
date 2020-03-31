@@ -31,6 +31,9 @@ module:
     cooldown: 0
   chatclear:
     messageAmount: 100
+    aliases:
+      - clearchat
+      - cc
   enderchest:
     aliases:
       - ec

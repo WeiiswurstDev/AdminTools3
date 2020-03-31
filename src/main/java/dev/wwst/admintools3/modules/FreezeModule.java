@@ -2,6 +2,7 @@ package dev.wwst.admintools3.modules;
 
 import dev.wwst.admintools3.AdminTools3;
 import dev.wwst.admintools3.util.PlayerDataStorage;
+import dev.wwst.admintools3.util.XMaterial;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -20,7 +21,7 @@ public class FreezeModule extends Module implements Listener {
     private final PlayerDataStorage pds;
 
     public FreezeModule() {
-        super(false, true, "freeze", Material.PACKED_ICE);
+        super(false, true, "freeze", XMaterial.PACKED_ICE);
         useDefaultMessageKeyFormat = false;
         pds = new PlayerDataStorage("frozen.yml");
         frozenPlayers = pds.getAllData();

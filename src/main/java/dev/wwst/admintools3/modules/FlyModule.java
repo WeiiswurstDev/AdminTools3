@@ -1,5 +1,6 @@
 package dev.wwst.admintools3.modules;
 
+import dev.wwst.admintools3.util.XMaterial;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
@@ -7,7 +8,7 @@ import org.bukkit.entity.Player;
 public class FlyModule extends Module {
 
     public FlyModule() {
-        super(false, true, "fly", Material.FEATHER);
+        super(false, true, "fly", XMaterial.FEATHER);
     }
 
     @Override

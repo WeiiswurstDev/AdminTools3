@@ -3,8 +3,8 @@ package dev.wwst.admintools3.modules;
 import dev.wwst.admintools3.AdminTools3;
 import dev.wwst.admintools3.util.Configuration;
 import dev.wwst.admintools3.util.ItemBuilder;
+import dev.wwst.admintools3.util.XMaterial;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.Server;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
@@ -25,11 +25,11 @@ public class ChatClearModule extends Module implements Listener {
 
 
     public ChatClearModule() {
-        super(false, false, "chatclear", Material.STRUCTURE_VOID);
+        super(false, false, "chatclear", XMaterial.STRUCTURE_VOID);
         invName = msg.getMessage("gui.chatclear.invName");
         gamemodeSelector = Bukkit.createInventory(null, InventoryType.BREWING, invName);
-        gamemodeSelector.setItem(0,new ItemBuilder(Material.IRON_BLOCK, msg.getMessage("gui.chatclear.forYou")).build());
-        gamemodeSelector.setItem(2,new ItemBuilder(Material.GOLD_BLOCK, msg.getMessage("gui.chatclear.forAll")).build());
+        gamemodeSelector.setItem(0,new ItemBuilder(XMaterial.IRON_BLOCK, msg.getMessage("gui.chatclear.forYou")).build());
+        gamemodeSelector.setItem(2,new ItemBuilder(XMaterial.GOLD_BLOCK, msg.getMessage("gui.chatclear.forAll")).build());
         gamemodeSelector.setItem(1,ItemBuilder.WHITEPANE);
         gamemodeSelector.setItem(3,ItemBuilder.WHITEPANE);
         Bukkit.getPluginManager().registerEvents(this, AdminTools3.getInstance());
