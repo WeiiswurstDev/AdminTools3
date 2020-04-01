@@ -1,10 +1,13 @@
 package dev.wwst.admintools3;
 
 import com.google.common.collect.Lists;
+import dev.wwst.admintools3.events.AdminChatEvent;
 import dev.wwst.admintools3.gui.GUIManager;
 import dev.wwst.admintools3.modules.ModuleLoader;
 import dev.wwst.admintools3.util.*;
+import io.papermc.lib.PaperLib;
 import org.bukkit.Bukkit;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.List;
@@ -32,12 +35,17 @@ public final class AdminTools3 extends JavaPlugin {
         getCommand("admingui").setExecutor(new AdminToolsCommand());
         getCommand("playerinfo").setExecutor(new PlayerInfoCommand());
 
-        if(!Bukkit.getPluginManager().isPluginEnabled("ProtocolLib")) {
+        PluginManager pm = Bukkit.getPluginManager();
+        pm.registerEvents(new AdminChatEvent(), this);
+
+        if(!pm.isPluginEnabled("ProtocolLib")) {
             getLogger().log(Level.WARNING, MessageTranslator.getInstance().getMessage("chatmessages.protocolLibNotFound"));
         }
-        if(XMaterial.isNewVersion()) {
+        if(!XMaterial.isNewVersion()) {
             getLogger().log(Level.INFO, MessageTranslator.getInstance().getMessage("chatmessages.legacyVersion"));
         }
+
+        PaperLib.suggestPaper(this);
 
         Metrics metrics = new Metrics(this, 6930);
 

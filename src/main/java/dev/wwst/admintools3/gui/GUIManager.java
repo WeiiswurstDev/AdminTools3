@@ -9,6 +9,7 @@ import dev.wwst.admintools3.util.GUIBuilder;
 import dev.wwst.admintools3.util.ItemBuilder;
 import dev.wwst.admintools3.util.XMaterial;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
@@ -135,7 +136,7 @@ public class GUIManager {
             XMaterial m = XMaterial.GRASS;
             if(w.getName().contains("nether")) m = XMaterial.NETHERRACK;
             else if(w.getName().contains("the_end")) m = XMaterial.END_STONE;
-            menu.setItem(slot, new ItemBuilder(m, "§a"+w.getName()).addLore(worldSelectorItemLore).build());
+            menu.setItem(slot, new ItemBuilder(m, ChatColor.GREEN+w.getName()).addLore(worldSelectorItemLore).build());
         }
         return menu.build();
     }

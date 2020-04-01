@@ -32,6 +32,13 @@ public class ModuleLoader {
         registerModule(new GamemodeModule());
         registerModule(new ChatClearModule());
         registerModule(new CommandSpyModule());
+        registerModule(new MaxHeartsModule());
+        registerModule(new InvClearModule());
+        registerModule(new DifficultyChangeModule());
+        registerModule(new WorldTPModule());
+        registerModule(new PvpChangeModule());
+        registerModule(new SunnyWeatherModule());
+        registerModule(new SetSpawnModule());
 
         AdminTools3.getInstance().getLogger().log(Level.INFO,modules.size()+" modules loaded.");
     }

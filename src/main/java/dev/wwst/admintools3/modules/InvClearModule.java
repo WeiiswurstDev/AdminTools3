@@ -4,11 +4,10 @@ import dev.wwst.admintools3.util.XMaterial;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 
-public class KillModule extends Module{
+public class InvClearModule extends Module {
 
-
-    public KillModule() {
-        super(false, true, "kill", XMaterial.DIAMOND_SWORD);
+    public InvClearModule() {
+        super(false, true, "invclear", XMaterial.CHEST);
     }
 
     @Override
@@ -16,8 +15,7 @@ public class KillModule extends Module{
         if(!super.execute(player, other, world)) {
             return false;
         }
-        other.setHealth(0);
+        other.getInventory().clear();
         return true;
     }
-
 }

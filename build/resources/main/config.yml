@@ -18,6 +18,10 @@ language: en
 prefix: "&cAdminTools&8│ &7"
 log-module-usage: true
 
+adminchat:
+  format: "&c&lAC &7<&e%player%&7> &a%message%"
+  prefix: "@admin"
+
 module:
   heal:
     fillFoodBar: true
@@ -38,4 +42,4 @@ module:
       - invspy
 
 
-CONFIG_VERSION_NEVER_CHANGE_THIS: 300
+CONFIG_VERSION_NEVER_CHANGE_THIS: 2

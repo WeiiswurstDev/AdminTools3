@@ -48,14 +48,14 @@ public class GUISession implements Listener {
                     // Linksclick - Auf DICH ausführen
                     if(e.getAction() == InventoryAction.COLLECT_TO_CURSOR || e.getAction() == InventoryAction.PICKUP_ALL) {
                         if(player.hasPermission("admintools3.module."+m.getName()) || player.hasPermission("admintools3.module."+m.getName()+".self")){
-
+                            selectedPlayer = player;
                             if(selected.needsWorld()) {
                                 closed = true;
                                 player.openInventory(GUIManager.getInstance().generateWorldSelector(player));
                                 closed = false;
                             } else {
                                 player.closeInventory();
-                                selected.execute(player, player, null);
+                                selected.execute(player, selectedPlayer, null);
                             }
                         } else {
                             player.sendMessage(MessageTranslator.getInstance().getMessageAndReplace("chatmessages.noperm",true,player,"admintools3.module."+m.getName()+".self"));
@@ -72,8 +72,6 @@ public class GUISession implements Listener {
                             player.closeInventory();
                             selected.execute(player, player, null);
                         }
-                    } else {
-                        player.sendMessage("DEBUG ACTION="+e.getAction().toString());
                     }
                 }
             }
@@ -94,6 +92,7 @@ public class GUISession implements Listener {
             for(World w : Bukkit.getWorlds()) {
                 if(w.getName().equals(name.substring(2))) {
                     selectedWorld = w;
+                    player.closeInventory();
                     selected.execute(player,selectedPlayer,selectedWorld);
                     return;
                 }

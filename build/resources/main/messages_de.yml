@@ -16,7 +16,10 @@ chatmessages:
   missingWorld: "&cDu hast keine Welt ausgewählt"
   tooManyPlayers: "&cDa nur &e54 &cSpieler in die GUI passen, aber &e%s &conline sind, musst du diese Spieler direkt im /a-Befehl auswählen!"
   tooManyWorlds: "&cDa nur &e54 &cWelten in die GUI passen, aber &e%s &cgeladen sind, musst du diese Welten direkt im /a-Befehl auswählen!"
+  numberFormat: "&e%s &cist keine Nummer! (Denke daran, dass du Kommas als Punkt '.' schreiben musst!)"
+  smallerThanZero: "&e%s &cist kleiner als 0!"
   playerOnlyCommand: "Diesen Befehl kannst du nur Ingame benutzen!"
+  legacyVersion: "!!! Deine Server-Version ist ALT! Bitte nutze die neueste Minecraft-Version. Obwohl wir an Kompatibilität arbeiten, kann sie nicht garantiert werden !!!"
   protocolLibNotFound: >
     !!! Das Plugin PROTOCOLLIB konnte nicht gefunden werden.
     Das bedeutet, dass Text in der ACTIONBAR stattdessen im Chat angezeigt wird.
@@ -55,6 +58,12 @@ gui:
     invName: "&bWähle das Ziel aus"
     forYou: "&bLeere deinen Chat"
     forAll: "&bLeere den Chat aller Spieler"
+  difficulty:
+    invName: "&bWähle die Schwierigkeit"
+    peaceful: "&bFriedlich"
+    easy: "&eEinfach"
+    normal: "&6Normal"
+    hard: "&cSchwer"
 
 playerInfo:
   explanationIgnoredByPlugin: " -- 'lines' wird immer angezeigt.
@@ -82,6 +91,15 @@ module:
       applyToOther: "&aDu hast &b%s &ageheilt."
       applyToSelf: "&aDu hast dich geheilt."
       appliedByOther: "&aDu wurdest von &b%s &ageheilt."
+  maxhearts:
+    item:
+      name: "&4Maximale Leben"
+      lore: "&7Verändere die Anzahl##&7an Leben, die das Ziel##&7haben kann."
+    message:
+      sendAmountInChat: "&aSchreibe die Anzahl an &nhalben Herzen&a in den Chat, die der Spieler danach haben soll."
+      applyToOther: "&b%s&a hat jetzt &b%s&a halbe Herzen."
+      applyToSelf: "&aDu hast jetzt &b%s &ahalbe Herzen."
+      appliedByOther: "&b%s&a hat deine Leben zu &b%s&a halben Herzen gesetzt."
   kill:
     item:
       name: "&4Töten"
@@ -189,3 +207,47 @@ module:
       toggleOn: "&aWenn ein Spieler einen Befehl ausführt, wirst du nun benachrichtigt."
       toggleOff: "&aWenn ein Spieler einen Befehl ausführt, wirst du nicht mehr benachrichtigt."
       commandUsed: "&cCMDSPY &7> &b%s &ahat &b%s &aausgeführt."
+  invclear:
+    item:
+      name: "&eInventar leeren"
+      lore: "&7Leere das Inventar##&7eines Spielers!"
+    message:
+      applyToSelf: "&aDu hast dein Inventar geleert."
+      applyToOther: "&aDu hast das Inventar von &b%s&a geleert."
+      appliedByOther: "&aDein Inventar wurde von &b%s &ageleert."
+  difficulty:
+    item:
+      name: "&3Schwierigkeit setzen"
+      lore: "&7Setze die Schwierigkeit##&7für eine Welt"
+    message:
+      applyToSelf: "&aWähle die Schwierigkeit aus."
+      difficultySet: "&aDu hast die Schwierigkeit auf %s &agesetzt."
+      noDifficultySelected: "&cDu hast nicht auf eine Schwierigkeit geclickt!"
+  worldtp:
+    item:
+      name: "&dTeleportieren"
+      lore: "&7Teleportiere dich selbst ##&7oder jemand anderen##&7in eine andere Welt!"
+    message:
+      applyToOther: "&aDu hast &b%s &ateleportiert."
+      applyToSelf: "&aDu hast dich selbst teleportiert."
+      appliedByOther: "&aDu wurdest von &b%s &ateleportiert."
+  pvp:
+    item:
+      name: "&cPvP An/Ausschalten"
+      lore: "&7Erlaube oder verbiete##&7PvP in einer Welt."
+    message:
+      toggleOn: "&aDu hast in &b%s &aPvP aktiviert."
+      toggleOff: "&aDu hast in &b%s &aPvP deaktiviert."
+  weather:
+    item:
+      name: "&cRegen An/Ausschalten"
+      lore: "&7Lasse es Regnen##&7oder die Sonne scheinen."
+    message:
+      toggleOn: "&aDu hast in &b%s &aRegen aktiviert."
+      toggleOff: "&aDu hast in &b%s &aRegen deaktiviert."
+  setspawn:
+    item:
+      name: "&eWelten-Spawnpunkt setzen"
+      lore: "&7Setze den Spawnpunkt##&7der Welt, in der du##&7bist, zu dir."
+    message:
+      applyToSelf: "&aDu hast den Spawnpunkt gesetzt."
