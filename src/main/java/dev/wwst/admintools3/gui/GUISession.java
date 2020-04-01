@@ -80,7 +80,7 @@ public class GUISession implements Listener {
         } else if(MessageTranslator.getInstance().getMessage("gui.playerSelector.invName",false,player).equals(e.getView().getTitle())) {
             if(e.getCurrentItem().getType() != XMaterial.PLAYER_HEAD.parseMaterial()) return;
             SkullMeta clickedMeta = (SkullMeta) e.getCurrentItem().getItemMeta();
-            selectedPlayer = Bukkit.getPlayer(clickedMeta.getOwningPlayer().getUniqueId());
+            selectedPlayer = getFromSkull(clickedMeta); // legacy compatibility
             if(selected.needsWorld()) {
                 closed = true;
                 player.openInventory(GUIManager.getInstance().generateWorldSelector(player));
@@ -107,6 +107,15 @@ public class GUISession implements Listener {
         if(e.getPlayer().getUniqueId() == player.getUniqueId()) {
             closed = true;
             GUIManager.getInstance().closeSession(player);
+        }
+    }
+
+    @SuppressWarnings("deprecation")
+    private Player getFromSkull(SkullMeta meta) {
+        if(XMaterial.isNewVersion()) {
+            return Bukkit.getPlayer(meta.getOwningPlayer().getUniqueId());
+        } else { // legacy
+            return Bukkit.getPlayer(meta.getOwner());
         }
     }
 }

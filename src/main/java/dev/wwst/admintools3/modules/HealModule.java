@@ -1,5 +1,6 @@
 package dev.wwst.admintools3.modules;
 
+import dev.wwst.admintools3.AdminTools3;
 import dev.wwst.admintools3.util.Configuration;
 import dev.wwst.admintools3.util.XMaterial;
 import org.bukkit.Material;
@@ -17,11 +18,16 @@ public class HealModule extends Module {
     }
 
     @Override
+    @SuppressWarnings("deprecation") //just for legacy support!
     public boolean execute(Player player, Player other, World world) {
         if(!super.execute(player, other, world)) {
             return false;
         }
-        other.setHealth(other.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
+        if(XMaterial.isNewVersion()) {
+            other.setHealth(other.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
+        } else {
+            other.setHealth(other.getMaxHealth());
+        }
         if(fillFoodBar) other.setFoodLevel(20);
         return true;
     }

@@ -19,8 +19,6 @@ public class ModuleLoader {
         INSTANCE = this;
         modules = Lists.newArrayList();
         aliases = Lists.newArrayList();
-        Command adminCommand = AdminTools3.getInstance().getCommand("admingui");
-        aliases.addAll(adminCommand.getAliases());
 
         registerModule(new HealModule());
         registerModule(new KillModule());

@@ -87,13 +87,6 @@ public class AdminToolsCommand implements CommandExecutor, Listener {
         executeModule(p, alias, Arrays.copyOfRange(args, 1, args.length));
     }
 
-    @EventHandler
-    public void onSend(PlayerCommandSendEvent event) {
-        System.out.println(event.getCommands().size());
-        event.getCommands().addAll(aliasesWithSlash);
-        System.out.println(event.getCommands().size());
-    }
-
     private void executeModule(Player p, String moduleName, String[] args) {
         for(Module m : ModuleLoader.getInstance().getModuleList()) {
             if(m.getAliases().contains(moduleName)) {

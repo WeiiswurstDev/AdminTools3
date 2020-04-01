@@ -1,6 +1,7 @@
 package dev.wwst.admintools3.gui;
 
 import com.google.common.collect.Maps;
+import dev.wwst.admintools3.AdminTools3;
 import dev.wwst.admintools3.util.MessageTranslator;
 import dev.wwst.admintools3.modules.Module;
 import dev.wwst.admintools3.modules.ModuleLoader;
@@ -93,6 +94,7 @@ public class GUIManager {
         return menu.build();
     }
 
+    @SuppressWarnings("deprecation")
     public Inventory generatePlayerSelector(Player p) {
         int rows = Bukkit.getOnlinePlayers().size()/9+1;
         if(rows > 6) {
@@ -108,7 +110,11 @@ public class GUIManager {
             Player x = onlineList[slot];
             ItemStack i = new ItemBuilder(XMaterial.PLAYER_HEAD, x.getName()).addLore(playerSelectorItemLore).build();
             SkullMeta meta = (SkullMeta) i.getItemMeta();
-            meta.setOwningPlayer(x);
+            if(XMaterial.isNewVersion()) { // current
+                meta.setOwningPlayer(x);
+            } else { // legacy
+                meta.setOwner(x.getName());
+            }
             i.setItemMeta(meta);
             menu.setItem(slot, i);
         }

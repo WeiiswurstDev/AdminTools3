@@ -25,7 +25,7 @@ public class MessageTranslator {
     private String language;
     private String prefix;
     private YamlConfiguration cfg;
-    private boolean papiEnabled = true;
+    private boolean papiEnabled = false;
 
     private HashMap<String, String> messages;
 
@@ -56,9 +56,10 @@ public class MessageTranslator {
         }
         plugin.getLogger().log(Level.INFO, "Language loaded: messages_"+language+".yml");
 
-        if(!Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
+        if(Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
+            papiEnabled = true;
+        } else {
             plugin.getLogger().log(Level.WARNING, getMessage("chatmessages.papiNotFound"));
-            papiEnabled = false;
         }
     }
 

@@ -17,6 +17,7 @@ chatmessages:
   tooManyPlayers: "&There are &e%s&c players online, but only &e54&c fit in the GUI. You have to use the /a <module> [player] [world] to select those."
   tooManyWorlds: "&There are &e%s&c worlds, but only &e54&c fit in the GUI. You have to use the /a <module> [player] [world] to select those."
   playerOnlyCommand: "You may only use this command as a player."
+  legacyVersion: "!!! You are using an OLD minecraft version! We try everything to support old versions, but we can't guarantee anything. Please update to the newest version. !!!"
   protocolLibNotFound: >
     !!! The plugin PROTOCOLLIB could not be found.
     This means that the ACTIONBAR will be sent to chat instead.

@@ -3,10 +3,7 @@ package dev.wwst.admintools3;
 import com.google.common.collect.Lists;
 import dev.wwst.admintools3.gui.GUIManager;
 import dev.wwst.admintools3.modules.ModuleLoader;
-import dev.wwst.admintools3.util.Metrics;
-import dev.wwst.admintools3.util.Configuration;
-import dev.wwst.admintools3.util.MessageTranslator;
-import dev.wwst.admintools3.util.PlayerDataStorage;
+import dev.wwst.admintools3.util.*;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -37,6 +34,9 @@ public final class AdminTools3 extends JavaPlugin {
 
         if(!Bukkit.getPluginManager().isPluginEnabled("ProtocolLib")) {
             getLogger().log(Level.WARNING, MessageTranslator.getInstance().getMessage("chatmessages.protocolLibNotFound"));
+        }
+        if(XMaterial.isNewVersion()) {
+            getLogger().log(Level.INFO, MessageTranslator.getInstance().getMessage("chatmessages.legacyVersion"));
         }
 
         Metrics metrics = new Metrics(this, 6930);

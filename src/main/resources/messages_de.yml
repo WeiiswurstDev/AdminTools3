@@ -17,6 +17,7 @@ chatmessages:
   tooManyPlayers: "&cDa nur &e54 &cSpieler in die GUI passen, aber &e%s &conline sind, musst du diese Spieler direkt im /a-Befehl auswählen!"
   tooManyWorlds: "&cDa nur &e54 &cWelten in die GUI passen, aber &e%s &cgeladen sind, musst du diese Welten direkt im /a-Befehl auswählen!"
   playerOnlyCommand: "Diesen Befehl kannst du nur Ingame benutzen!"
+  legacyVersion: "!!! Deine Server-Version ist ALT! Bitte nutze die neueste Minecraft-Version. Obwohl wir an Kompatibilität arbeiten, kann sie nicht garantiert werden !!!"
   protocolLibNotFound: >
     !!! Das Plugin PROTOCOLLIB konnte nicht gefunden werden.
     Das bedeutet, dass Text in der ACTIONBAR stattdessen im Chat angezeigt wird.
