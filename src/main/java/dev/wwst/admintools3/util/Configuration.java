@@ -15,7 +15,7 @@ public class Configuration {
     private static File file;
     private static FileConfiguration customFile;
 
-    private static final int CURRENT_CONFIG_VERSION = 300;
+    private static final int CURRENT_CONFIG_VERSION = 2;
 
     private static AdminTools3 plugin;
 
