@@ -57,7 +57,7 @@ public final class AdminTools3 extends JavaPlugin {
             }
         }));
 
-        new UpdateChecker(this, 12345).getVersion(version -> {
+        new UpdateChecker(this, 76747).getVersion(version -> {
             if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
                 getLogger().info("You are up to date!");
             } else {
