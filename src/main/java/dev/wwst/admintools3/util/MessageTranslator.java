@@ -41,13 +41,17 @@ public class MessageTranslator {
 
         saveDefaults();
 
-        File languageFile = new File(plugin.getConfigFolderPath(), "messages_"+language+".yml");
+        System.out.println(plugin.getConfigFolderPath());
+
+        File languageFile = new File("plugins/Admintools3/messages_"+language+".yml");
         if(!languageFile.exists()) {
             plugin.getLogger().log(Level.SEVERE, "!!! The language chosen by you, "+language+", cannot be resolved!");
             plugin.getLogger().log(Level.SEVERE, "!!! Create a file called messages_"+language+".yml in the AdminTools folder to start!");
             plugin.getLogger().log(Level.SEVERE, "!!! For now, the ENGLISH language file will be loaded!");
-
-            languageFile =new File(plugin.getConfigFolderPath(), "messages_en.yml");
+            languageFile =new File("plugins/Admintools3/messages_en.yml");
+            System.out.println(languageFile.exists());
+            System.out.println(languageFile.getAbsolutePath());
+            System.out.println(languageFile.getName());
         }
         cfg = YamlConfiguration.loadConfiguration(languageFile);
         Map<String, Object> values = cfg.getValues(true);
