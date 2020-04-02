@@ -11,6 +11,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.List;
+import java.util.concurrent.Callable;
 import java.util.logging.Level;
 
 public final class AdminTools3 extends JavaPlugin {
@@ -49,7 +50,20 @@ public final class AdminTools3 extends JavaPlugin {
 
         Metrics metrics = new Metrics(this, 6930);
 
-        metrics.addCustomChart(new Metrics.SimplePie("used_language", () -> Configuration.get().getString("language","en")));
+        metrics.addCustomChart(new Metrics.SimplePie("used_language", new Callable<String>() {
+            @Override
+            public String call() throws Exception {
+                return Configuration.get().getString("language", "en");
+            }
+        }));
+
+        new UpdateChecker(this, 12345).getVersion(version -> {
+            if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
+                getLogger().info("You are up to date!");
+            } else {
+                getLogger().info("!!! There is a new update available! Download at https://www.spigotmc.org/resources/admintools.76747/ !!!");
+            }
+        });
     }
 
     @Override
