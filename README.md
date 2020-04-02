@@ -5,6 +5,8 @@ BukkitDEV: https://dev.bukkit.org/projects/admintoolsde
 
 SpigotMC: https://www.spigotmc.org/resources/admintools.76747/
 
+PaperMC: https://papermc.io/forums/t/1-8-8-1-15-2-admintools3-20-modules-in-a-gui-all-messages-configurable/2999
+
 bStats: https://bstats.org/plugin/bukkit/AdminToolsDE/6930
 
 ## Support
