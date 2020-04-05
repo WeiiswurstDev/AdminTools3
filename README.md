@@ -1,16 +1,13 @@
 # AdminTools3
 A general purpose Craftbukkit+ Plugin
 
-BukkitDEV: https://dev.bukkit.org/projects/admintoolsde
-
-SpigotMC: https://www.spigotmc.org/resources/admintools.76747/
-
-PaperMC: https://papermc.io/forums/t/1-8-8-1-15-2-admintools3-20-modules-in-a-gui-all-messages-configurable/2999
-
-bStats: https://bstats.org/plugin/bukkit/AdminToolsDE/6930
+* [BukkitDEV](https://dev.bukkit.org/projects/admintoolsde)
+* [SpigotMC](https://www.spigotmc.org/resources/admintools.76747/)
+* [PaperMC](https://papermc.io/forums/t/1-8-8-1-15-2-admintools3-20-modules-in-a-gui-all-messages-configurable/2999)
+* [bStats](https://bstats.org/plugin/bukkit/AdminToolsDE/6930)
 
 ## Support
-You will recieve support in the discord server: https://discord.gg/YDkQbE7
+You will recieve support in the [discord server](https://discord.gg/YDkQbE7)
 
 The review section is NOT the place to report bugs or suggest features!
 
@@ -56,5 +53,5 @@ The review section is NOT the place to report bugs or suggest features!
 
 The API, and examples, are in the Wiki.
 ## Credits
-* XMaterial for Compatibility (https://www.spigotmc.org/threads/xseries-xmaterial-xparticle-xsound-xpotion-titles-actionbar-etc.378136/)
-* bstats Metrics (https://bstats.org/)
+* [XMaterial for Compatibility](https://www.spigotmc.org/threads/xseries-xmaterial-xparticle-xsound-xpotion-titles-actionbar-etc.378136/)
+* [bstats Metrics](https://bstats.org/)
