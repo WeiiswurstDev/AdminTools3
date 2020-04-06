@@ -19,6 +19,7 @@ The review section is NOT the place to report bugs or suggest features!
     * Default translations to English and German provided
 * Customizable cooldowns, aliases and individual settings for each module
 * Permissions for each module, and more
+* Option to use custom Join and Leave messages!
 * /pinfo, which shows customizable information for any player
 * An API to integrate your plugin as modules into the GUI
 * If you use PaperMC, the plugin will teleport players asynchronously to save resources
