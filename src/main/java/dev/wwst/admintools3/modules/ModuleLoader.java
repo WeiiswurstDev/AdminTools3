@@ -12,6 +12,7 @@ public class ModuleLoader {
 
     private final List<Module> modules;
     private final List<String> aliases;
+    private final List<String> commandAliases;
 
     private static ModuleLoader INSTANCE;
 
@@ -19,6 +20,7 @@ public class ModuleLoader {
         INSTANCE = this;
         modules = Lists.newArrayList();
         aliases = Lists.newArrayList();
+        commandAliases = Lists.newArrayList();
 
         registerModule(new HealModule());
         registerModule(new KillModule());
@@ -57,9 +59,16 @@ public class ModuleLoader {
         }
         modules.add(module);
         aliases.addAll(module.getAliases());
+        if(module.shouldRegisterCommands()) {
+            commandAliases.addAll(module.getAliases());
+        }
     }
 
     public List<String> getAliases() {
+        return aliases;
+    }
+
+    public List<String> getCommandAliases() {
         return aliases;
     }
 }

@@ -31,6 +31,7 @@ public class Module {
     protected final MessageTranslator msg;
 
     protected boolean useDefaultMessageKeyFormat = true;
+    protected boolean registerCommands = true;
 
     protected List<String> aliases;
 
@@ -48,8 +49,10 @@ public class Module {
         this.itemname = msg.getMessage("module."+name+".item.name");
         this.itemlore = msg.getMessage("module."+name+".item.lore");
 
-        this.cooldown = Configuration.get().getInt("module."+name+".cooldown");
+        this.cooldown = Configuration.get().getInt("module."+name+".cooldown",0);
         this.onCooldown = new HashMap<>();
+
+        this.registerCommands = Configuration.get().getBoolean("module."+name+".registerCommands",true);
 
         aliases = Configuration.get().getStringList("module."+name+".aliases");
         // if(aliases == null) aliases = Lists.newArrayList(); // getStringList might return an empty list, but never null.
@@ -136,5 +139,9 @@ public class Module {
 
     public List<String> getAliases() {
         return aliases;
+    }
+
+    public boolean shouldRegisterCommands() {
+        return registerCommands;
     }
 }

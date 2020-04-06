@@ -11,7 +11,7 @@
 chatmessages:
   noperm: "&cMissing Permission: &e%s"
   syntax: "&cSyntax Error. Please use: &e%s"
-  moduleNotFound: "&cCant find a module named &e%s&c."
+  moduleNotFound: "&cCan't find a module named &e%s&c."
   missingPlayer: "&cYou didn't select a player!"
   missingWorld: "&cYou didn't select a world!"
   tooManyPlayers: "&There are &e%s&c players online, but only &e54&c fit in the GUI. You have to use the /a <module> [player] [world] to select those."
@@ -124,7 +124,7 @@ module:
       appliedByOther: "&b%s &aopened your enderchest."
   fly:
     item:
-      name: "&fFly"
+      name: "&bFly"
       lore: "&7Enables Flying, like##&7in creative mode."
     message:
       toggleOn: "&aYou can now fly like in creative mode."

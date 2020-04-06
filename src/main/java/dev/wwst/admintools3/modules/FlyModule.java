@@ -9,6 +9,7 @@ public class FlyModule extends Module {
 
     public FlyModule() {
         super(false, true, "fly", XMaterial.FEATHER);
+        useDefaultMessageKeyFormat = false;
     }
 
     @Override
@@ -18,10 +19,20 @@ public class FlyModule extends Module {
         }
         if(other.getAllowFlight()) {
             other.setAllowFlight(false);
-            other.sendMessage(msg.getMessage("module.fly.toggleOff",true,player));
+            if(!other.getName().equals(player.getName())) {
+                other.sendMessage(msg.getMessageAndReplace("module.fly.message.toggledOffByOther",true, player, player.getName()));
+                player.sendMessage(msg.getMessageAndReplace("module.fly.message.toggledOffForOther",true, player, other.getName()));
+            } else {
+                other.sendMessage(msg.getMessage("module.fly.message.toggleOff",true,other));
+            }
         } else {
             other.setAllowFlight(true);
-            other.sendMessage(msg.getMessage("module.fly.toggleOn",true,player));
+            if(!other.getName().equals(player.getName())) {
+                other.sendMessage(msg.getMessageAndReplace("module.fly.message.toggledOnByOther", true, player, player.getName()));
+                player.sendMessage(msg.getMessageAndReplace("module.fly.message.toggledOnForOther",true, player, other.getName()));
+            } else {
+                other.sendMessage(msg.getMessage("module.fly.message.toggleOn",true, other));
+            }
         }
         return true;
     }

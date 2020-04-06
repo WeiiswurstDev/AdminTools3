@@ -15,7 +15,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
-import org.bukkit.event.player.PlayerCommandSendEvent;
 
 import java.util.Arrays;
 import java.util.List;
@@ -24,15 +23,17 @@ public class AdminToolsCommand implements CommandExecutor, Listener {
 
     private final MessageTranslator msg;
     private final List<String> aliases;
-    private final List<String> aliasesWithSlash;
+    private final List<String> commandAliases;
+    private final List<String> commandAliasesWithSlash;
 
     public AdminToolsCommand() {
         msg = MessageTranslator.getInstance();
         aliases = ModuleLoader.getInstance().getAliases();
-        aliasesWithSlash = Lists.newArrayListWithCapacity(aliases.size());
-        for(String alias : aliases) {
-            aliasesWithSlash.add("/"+alias);
-            aliasesWithSlash.add("/admintools3:"+alias);
+        commandAliases = ModuleLoader.getInstance().getCommandAliases();
+        commandAliasesWithSlash = Lists.newArrayListWithCapacity(commandAliases.size()*2);
+        for(String alias : commandAliases) {
+            commandAliasesWithSlash.add("/"+alias);
+            commandAliasesWithSlash.add("/admintools3:"+alias);
         }
         Bukkit.getPluginManager().registerEvents(this,AdminTools3.getInstance());
     }
@@ -75,7 +76,7 @@ public class AdminToolsCommand implements CommandExecutor, Listener {
     public void aliasListener(PlayerCommandPreprocessEvent event) {
         String[] args = event.getMessage().split(" ");
         String alias = args[0].substring(1); //cut away /
-        if(!aliases.contains(alias)) {
+        if(!commandAliases.contains(alias)) {
             return;
         }
         event.setCancelled(true);
@@ -91,13 +92,17 @@ public class AdminToolsCommand implements CommandExecutor, Listener {
         for(Module m : ModuleLoader.getInstance().getModuleList()) {
             if(m.getAliases().contains(moduleName)) {
                 Player other = p;
-                if(args.length >= 2) {
-                    for(Player x : Bukkit.getOnlinePlayers()) {
-                        if(x.getName().equalsIgnoreCase(args[0])) {other = x; break;}
+                World w = null;
+                if(args.length >= 1) {
+                    if(m.needsPlayer())
+                        for(Player x : Bukkit.getOnlinePlayers()) {
+                            if(x.getName().equalsIgnoreCase(args[0])) {other = x; break;}
+                        }
+                    else if(m.needsWorld()) {
+                        w = Bukkit.getWorld(args[0]);
                     }
                 }
-                World w = null;
-                if(args.length >= 3) {
+                if(args.length >= 2 && m.needsPlayer() && m.needsWorld()) {
                     w = Bukkit.getWorld(args[1]);
                 }
                 m.execute(p,other,w);

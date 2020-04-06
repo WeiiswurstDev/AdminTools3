@@ -124,7 +124,7 @@ module:
       appliedByOther: "&b%s &aschaut in deine Enderchest"
   fly:
     item:
-      name: "&fFliegen"
+      name: "&bFliegen"
       lore: "&7Ermögliche das Fliegen##&7wie im Kreativmodus"
     message:
       toggleOn: "&aDu kannst jetzt (wie im Kreativmodus) fliegen."

@@ -2,6 +2,7 @@ package dev.wwst.admintools3;
 
 import com.google.common.collect.Lists;
 import dev.wwst.admintools3.events.AdminChatEvent;
+import dev.wwst.admintools3.events.JoinQuitEvent;
 import dev.wwst.admintools3.gui.GUIManager;
 import dev.wwst.admintools3.modules.ModuleLoader;
 import dev.wwst.admintools3.util.*;
@@ -39,6 +40,10 @@ public final class AdminTools3 extends JavaPlugin {
         PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(new AdminChatEvent(), this);
 
+        if(Configuration.get().getBoolean("join-leave-messages.replace-messages")) {
+            pm.registerEvents(new JoinQuitEvent(), this);
+        }
+
         if(!pm.isPluginEnabled("ProtocolLib")) {
             getLogger().log(Level.WARNING, MessageTranslator.getInstance().getMessage("chatmessages.protocolLibNotFound"));
         }
@@ -56,6 +61,14 @@ public final class AdminTools3 extends JavaPlugin {
                 return Configuration.get().getString("language", "en");
             }
         }));
+
+        metrics.addCustomChart(new Metrics.SimplePie("custom_join_and_leave_messages", new Callable<String>() {
+            @Override
+            public String call() throws Exception {
+                return Configuration.get().getString("join-leave-messages.replace-messages", "false");
+            }
+        }));
+
 
         new UpdateChecker(this, 76747).getVersion(version -> {
             if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
