@@ -99,7 +99,7 @@ public class PlayerInfoCommand implements CommandExecutor {
     private int getMaxHealth(Player player) {
         try {
             return (int) player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
-        } catch(Exception exception) { ;
+        } catch(Exception exception) {
             return (int) player.getMaxHealth();
         }
     }
