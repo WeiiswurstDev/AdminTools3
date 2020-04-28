@@ -96,7 +96,10 @@ public class AdminToolsCommand implements CommandExecutor, Listener {
                 if(args.length >= 1) {
                     if(m.needsPlayer())
                         for(Player x : Bukkit.getOnlinePlayers()) {
-                            if(x.getName().equalsIgnoreCase(args[0])) {other = x; break;}
+                            if(x.getName().equalsIgnoreCase(args[0])) {
+                                other = x; 
+                                break;
+                            }
                         }
                     else if(m.needsWorld()) {
                         w = Bukkit.getWorld(args[0]);
