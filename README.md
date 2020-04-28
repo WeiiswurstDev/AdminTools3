@@ -1,4 +1,6 @@
 # AdminTools3
+[![CodeFactor](https://www.codefactor.io/repository/github/weiiswurstdev/admintools3/badge)](https://www.codefactor.io/repository/github/weiiswurstdev/admintools3)
+
 A general purpose Craftbukkit+ Plugin
 
 * [BukkitDEV](https://dev.bukkit.org/projects/admintoolsde)
