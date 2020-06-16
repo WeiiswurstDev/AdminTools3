@@ -43,6 +43,7 @@ module:
     aliases:
       - wb
   invsee:
+    showMessageToTarget: false
     aliases:
       - invspy
   worldtp:

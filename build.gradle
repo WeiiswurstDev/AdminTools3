@@ -20,10 +20,10 @@ repositories {
 
 dependencies {
     compileOnly 'org.bukkit:bukkit:1.13.2-R0.1-SNAPSHOT'
-    implementation('io.papermc:paperlib:1.0.2')
-    compileOnly 'com.comphenix.protocol:ProtocolLib:4.5.0'
-    compileOnly "com.github.MilkBowl:VaultAPI:1.7"
-    compileOnly 'me.clip:placeholderapi:2.10.5'
+    implementation 'io.papermc:paperlib:1.0.3'
+    compileOnly 'com.comphenix.protocol:ProtocolLib:4.5.1'
+    compileOnly 'com.github.MilkBowl:VaultAPI:1.7'
+    compileOnly 'me.clip:placeholderapi:2.10.6'
 }
 
 shadowJar {

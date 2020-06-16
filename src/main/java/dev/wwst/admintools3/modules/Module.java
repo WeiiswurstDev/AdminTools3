@@ -31,7 +31,8 @@ public class Module {
     protected final MessageTranslator msg;
 
     protected boolean useDefaultMessageKeyFormat = true;
-    protected boolean registerCommands = true;
+    protected boolean registerCommands;
+    protected boolean showMessageToTarget;
 
     protected List<String> aliases;
 
@@ -53,6 +54,7 @@ public class Module {
         this.onCooldown = new HashMap<>();
 
         this.registerCommands = Configuration.get().getBoolean("module."+name+".registerCommands",true);
+        this.showMessageToTarget = Configuration.get().getBoolean("module."+name+".showMessageToTarget",true);
 
         aliases = Configuration.get().getStringList("module."+name+".aliases");
         // if(aliases == null) aliases = Lists.newArrayList(); // getStringList might return an empty list, but never null.
@@ -98,7 +100,8 @@ public class Module {
         // Custom modules by third parties could use this as well to use their own message system, if they want to.
         if(useDefaultMessageKeyFormat) {
             if(needsPlayer && player.getUniqueId() != other.getUniqueId()) {
-                other.sendMessage(msg.getMessageAndReplace("module."+name+".message.appliedByOther", true,player, player.getName()));
+                if(showMessageToTarget)
+                    other.sendMessage(msg.getMessageAndReplace("module."+name+".message.appliedByOther", true,player, player.getName()));
                 player.sendMessage(msg.getMessageAndReplace("module."+name+".message.applyToOther", true,player, other.getName()));
             } else
                 player.sendMessage(msg.getMessage("module."+name+".message.applyToSelf", true, player));

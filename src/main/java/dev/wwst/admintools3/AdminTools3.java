@@ -18,7 +18,6 @@ import java.util.logging.Level;
 public final class AdminTools3 extends JavaPlugin {
 
     private static AdminTools3 INSTANCE;
-    private final String configurationFolderPath = "plugins//AdminTools3";
 
     public static final String PLUGIN_NAME = "Admintools3";
 
@@ -92,7 +91,7 @@ public final class AdminTools3 extends JavaPlugin {
     }
 
     public String getConfigFolderPath() {
-        return configurationFolderPath;
+        return "plugins//AdminTools3";
     }
 
     public void addDataStorage(PlayerDataStorage pds) {

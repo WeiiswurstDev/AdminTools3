@@ -14,7 +14,7 @@ import java.util.logging.Level;
 
 public class MessageTranslator {
 
-    private static String[] translations = new String[] {
+    private static final String[] translations = new String[] {
             "de",
             "en"
     };

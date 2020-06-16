@@ -17,15 +17,12 @@ public class Configuration {
 
     private static final int CURRENT_CONFIG_VERSION = 3;
 
-    private static AdminTools3 plugin;
-
     /*
      ** Finds or generates the custom config file
      */
     public static void setup(){
-        plugin = (AdminTools3) Bukkit.getServer().getPluginManager().getPlugin(AdminTools3.PLUGIN_NAME);
+        AdminTools3 plugin = AdminTools3.getInstance();
         plugin.getLogger().log(Level.INFO, "Loading Configuration");
-
 
         file = new File(plugin.getDataFolder(), "config.yml");
 
@@ -48,7 +45,6 @@ public class Configuration {
             customFile = YamlConfiguration.loadConfiguration(file);
         }
         plugin.getLogger().log(Level.INFO, "Done");
-
     }
 
     public static FileConfiguration get(){
