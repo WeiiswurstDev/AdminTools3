@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module external.linked.project.id="AdminTools:main" external.linked.project.path="$MODULE_DIR$/../.." external.root.project.path="$MODULE_DIR$/../.." external.system.id="GRADLE" external.system.module.group="dev.wwst" external.system.module.type="sourceSet" external.system.module.version="3.1.0" type="JAVA_MODULE" version="4">
+<module external.linked.project.id="AdminTools:main" external.linked.project.path="$MODULE_DIR$/../.." external.root.project.path="$MODULE_DIR$/../.." external.system.id="GRADLE" external.system.module.group="dev.wwst" external.system.module.type="sourceSet" external.system.module.version="3.1.2" type="JAVA_MODULE" version="4">
   <component name="FacetManager">
     <facet type="minecraft" name="Minecraft">
       <configuration>
@@ -20,9 +20,9 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: com.github.MilkBowl:VaultAPI:1.7" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: org.bukkit:bukkit:1.13.2-R0.1-SNAPSHOT" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Gradle: com.comphenix.protocol:ProtocolLib:4.5.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Gradle: me.clip:placeholderapi:2.10.5" level="project" />
-    <orderEntry type="library" name="Gradle: io.papermc:paperlib:1.0.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: com.comphenix.protocol:ProtocolLib:4.5.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: me.clip:placeholderapi:2.10.6" level="project" />
+    <orderEntry type="library" name="Gradle: io.papermc:paperlib:1.0.3" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: commons-lang:commons-lang:2.6" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: com.googlecode.json-simple:json-simple:1.1.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: com.google.guava:guava:21.0" level="project" />

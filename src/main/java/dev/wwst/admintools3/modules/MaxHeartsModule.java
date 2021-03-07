@@ -50,7 +50,7 @@ public class MaxHeartsModule extends Module implements Listener {
         }
         try {
             double newAmount = Double.parseDouble(event.getMessage());
-            if(newAmount < 0) {
+            if(newAmount <= 0) {
                 player.sendMessage(msg.getMessageAndReplace("chatmessages.smallerThanZero",true,player,event.getMessage()));
                 return;
             }

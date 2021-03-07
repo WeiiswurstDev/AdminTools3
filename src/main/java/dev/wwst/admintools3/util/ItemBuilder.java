@@ -20,7 +20,7 @@ public class ItemBuilder {
     }
 
     public ItemBuilder(XMaterial m, String name) {
-        i = new ItemStack(m.parseMaterial());
+        i = m.parseItem();
         im = i.getItemMeta();
         im.setDisplayName(name);
     }

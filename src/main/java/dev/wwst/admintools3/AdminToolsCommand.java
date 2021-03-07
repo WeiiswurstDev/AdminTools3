@@ -58,7 +58,7 @@ public class AdminToolsCommand implements CommandExecutor, Listener {
                 p.sendMessage(ChatColor.AQUA+"AdminTools3 v"+AdminTools3.getInstance().getDescription().getVersion());
                 p.sendMessage(ChatColor.AQUA+"Author: Weiiswurst");
                 p.sendMessage(ChatColor.AQUA+"Discord: https://discord.gg/YDkQbE7 (Support, Bugreports)");
-                p.sendMessage(ChatColor.AQUA+"Wiki: https://github.com/WeiiswurstDev/AdminTools3/wiki");
+                p.sendMessage(ChatColor.AQUA+"Wiki: https://weiiswurst.gitbook.io/admintools3/");
                 p.sendMessage(ChatColor.AQUA+"This plugin uses XMaterials and bStats. More info at https://github.com/WeiiswurstDev/AdminTools3");
                 p.sendMessage(ChatColor.AQUA+"Download links are on the Wiki Page as well.");
                 p.sendMessage(ChatColor.GREEN+"Use /a to open the GUI. Use /a <module> [player] [world] or /<module> to execute a module directly.");
