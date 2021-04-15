@@ -1,0 +1,253 @@
+### 简体中文翻译 ###
+###
+### 如果想要编辑该文件, 请遵循位于 https://github.com/WeiiswurstDev/AdminTools3/wiki/Configuring-AdminTools3 中的准则。
+###
+### 请不要编辑此文件的内容。
+### 每次服务器启动时，该文件都会被覆盖！
+### 将其复制到一个新文件中，将其命名为 "messages_<语言代号>.yml" 并更改 config 中的language为 <语言代号>!
+###
+######## 在这里所做的任何更改都将在启动时删除！！！！！！！！不更改此文件
+
+chatmessages:
+  noperm: "&c缺少权限: &e%s"
+  syntax: "&c语法错误。请使用: &e%s"
+  moduleNotFound: "&c找不到名为 &e%s&c 的模块。"
+  missingPlayer: "&c您尚未选择一名玩家!"
+  missingWorld: "&c您尚未选择一个世界!"
+  tooManyPlayers: "&c目前共有 &e%s&c 名玩家在线, 但在GUI中只能存放 &e54&c 个头像。您或许需要使用 /a <module> [player] [world] 来选择那些看不到的。"
+  tooManyWorlds: "&c目前共有 &e%s&c 个可用世界, 但在GUI中只能存放 &e54&c 个世界。您或许需要使用 /a <module> [player] [world] 来选择那些看不到的。"
+  numberFormat: "&e%s &c不是一个数字!"
+  smallerThanZero: "&e%s &c不能小于或等于0!"
+  playerOnlyCommand: "您只能以玩家的身份使用此命令。"
+  legacyVersion: "!!! 你正在使用过时的minecraft版本！即便我们已经做了一些支持旧版本的工作，但我们不能保证任何功能都工作正常。请更新至最新版本。 !!!"
+  protocolLibNotFound: >
+    !!! 插件 PROTOCOLLIB 无法被找到。
+    这意味着 ACTIONBAR 将以聊天内容的形式发送。
+    安装 ProtocolLib 来修复这个问题 !!!
+  papiNotFound: >
+    !!! 插件 PlaceholderAPI 无法被找到。
+    这意味着您不能在消息交互文件中使用 PAPI 变量。!!!
+  vaultNotFound: >
+    !!! 插件 VAULT 无法被找到。
+    这意味着 AdminTools3 无法获取玩家的余额。
+    如果您想通过 /pinfo 来查看玩家余额, 安装 Vault 和经济插件（比如说 EssentialsX）。!!!
+  economyNotFound: >
+    !!! 找不到经济插件。
+    如果说您安装了诸如 EssentialsX 的经济插件, /pinfo 将也会给您显示玩家余额。!!!
+  economyFound: "AdminTools 可以建立连接至名为 %s 的经济插件。"
+
+gui:
+  moduleSelector:
+    invName: "&b选择一个模块!"
+    noPermLore: "&c您可能无法使用 ##&c这个模块, 您没有##&c权限!## "
+    mayChooseOtherPlayer: "&7左击 应用到自身 ##&7右击 选中一名玩家"
+    mayOnlyChooseSelf: "&7点击: 应用到自身"
+  playerSelector:
+    invName: "&b选择一名玩家"
+    itemLore: "&7*点击以选中我*"
+  worldSelector:
+    invName: "&b选择一个世界"
+    itemLore: "&7*点击以选择我*"
+  gamemodeSelector:
+    invName: "&b选择一个游戏模式!"
+    survival: "&a生存"
+    creative: "&a创造"
+    adventure: "&a冒险"
+    spectator: "&a观察"
+  chatclear:
+    invName: "&b选择一个目标"
+    forYou: "&b清空您的聊天框"
+    forAll: "&b清空所有玩家的聊天框"
+  difficulty:
+    invName: "&b选择一个难度"
+    peaceful: "&b和平"
+    easy: "&e简单"
+    normal: "&6普通"
+    hard: "&c困难"
+
+playerInfo:
+  explanationIgnoredByPlugin: " -- 'lines' 总是会被发送。
+  经济选项将只在安装了经济插件和Vault的情况下发送。
+  您可以按任何顺序发送你想要的信息。
+  如果您安装了 PlaceholderAPI, 您可以使用于此使用任何 PAPI 变量。
+  如果没有 PAPI, 您也可以在 'lines' 中使用以下变量: player_name,player_displayname,player_uuid,player_health,player_food_level,player_gamemode,player_item_in_hand
+  此消息将被插件忽略，仅供参考。--"
+  lines:
+    - "&a关于玩家 &b%player_name% 的信息\n"
+    - "&a显示名称: &b%player_displayname%"
+    - "&aUUID: &b%player_uuid%"
+    - "&a血量: &b%player_health% &7| &aFood: &b%player_food_level%"
+    - "&a游戏模式: &b%player_gamemode%"
+    - "&a拿着的物品: &b%player_item_in_hand%"
+    - "&aNameMC 资料: https://mine.ly/%player_uuid%"
+  optionalBalance: "&a余额: &b%s"
+
+module:
+  heal:
+    item:
+      name: "&4治疗"
+      lore: "&7治疗您自己 ##&7或别的人"
+    message:
+      applyToOther: "&a您治疗了 &b%s。"
+      applyToSelf: "&a您治愈了自己。"
+      appliedByOther: "&b%s &a治愈了您。"
+  maxhearts:
+    item:
+      name: "&4血量上限"
+      lore: "&7更改目标##&7所能拥有的##&7最大血量上限。"
+    message:
+      sendAmountInChat: "&a输入目标应该拥有的 &n半心&a 血量。"
+      applyToOther: "&b%s&a 现在拥有 &b%s&a 个半心的血量。"
+      applyToSelf: "&a您现在拥有 &b%s&a 个半心的血量。"
+      appliedByOther: "&b%s&a 更改您的血量为 &b%s&a 个半心。"
+  kill:
+    item:
+      name: "&4击杀"
+      lore: "&7击杀您自己 ##&7或别的人"
+    message:
+      applyToOther: "&a您杀了 &b%s。"
+      applyToSelf: "&a您杀了您自己。"
+      appliedByOther: "&b%s &a杀了您。"
+  workbench:
+    item:
+      name: "&3工作台"
+      lore: "&7打开一个便携工作台"
+    message:
+      applyToSelf: "&a您打开了便携工作台。"
+  enderchest:
+    item:
+      name: "&5末影箱"
+      lore: "&7打开某人的##&7末影箱。"
+    message:
+      applyToSelf: "&a您的打开了自己的末影箱。"
+      applyToOther: "&a您打开了 &b%s&a 的末影箱。"
+      appliedByOther: "&b%s &a打开了您的末影箱。"
+  fly:
+    item:
+      name: "&b飞行"
+      lore: "&7启用飞行, 就像##&7在创造模式那样。"
+    message:
+      toggleOn: "&a您现在可以像在创意模式下一样飞行了。"
+      toggleOff: "&c您不能再飞了。"
+      toggledOnByOther: "&b%s &a为您启用了飞行。"
+      toggledOffByOther: "&b%s &c为您关闭了飞行。"
+      toggledOnForOther: "&a已为 &b%s &a启用飞行。"
+      toggledOffForOther: "&a已关闭 &b%s &a的飞行。"
+  mute:
+    item:
+      name: "&c禁言"
+      lore: "&7禁言或解禁##&7一名玩家。"
+    message:
+      toggleOn: "&c您被禁言了。"
+      toggleOff: "&a您又能说话了。"
+      toggledOnByOther: "&b%s &c禁言了您。"
+      toggledOffByOther: "&b%s &a解除了您的禁言。"
+      toggledOnForOther: "&b%s &a现在被禁言了。"
+      toggledOffForOther: "&b%s &a现在又能说话了。"
+      stillMuted: "&c您不能在禁言的时候说话!"
+      bypass: "&c您不能禁言 &e%s&c!"
+  freeze:
+    item:
+      name: "&b冻结"
+      lore: "&7禁止一名玩家##&7移动##&7或解除冻结。"
+    message:
+      toggleOn: "&c您已被冻结!"
+      toggleOff: "&a您又可以移动了。"
+      toggledOnByOther: "&b%s &a冻结了您。 &7(您不能移动)"
+      toggledOffByOther: "&b%s &a解除了您的冻结。 &7(您又可以移动了)"
+      toggledOnForOther: "&b%s &a已被冻结。"
+      toggledOffForOther: "&b%s &a又能移动了。"
+      stillMuted: "&c您不能在被冻结的时候移动!"
+      bypass: "&c您可能冻结不了 &e%s&c!"
+  invsee:
+    item:
+      name: "&2背包查看"
+      lore: "&7打开一名##&7玩家的背包"
+    message:
+      applyToSelf: "&c按 E 来打开您自己的背包。"
+      applyToOther: "&a您打开了 &b%s&a 的背包。"
+      appliedByOther: "&b%s &a看了看您的背包。"
+  vanish:
+    item:
+      name: "&b隐身"
+      lore: "&7使一名玩家 &b不可见##&7于缺少权限的玩家:##&7'admintools3.bypass.vanish'."
+    message:
+      toggleOn: "&a您现在无法被别的玩家看到。"
+      toggleOff: "&c您现在又能被别的玩家看到了。"
+      toggledOnByOther: "&b%s &a使你隐身。"
+      toggledOffByOther: "&b%s &a使您再次能被看到。"
+      toggledOnForOther: "&b%s &a现在处于隐身当中。"
+      toggledOffForOther: "&b%s &a又能被看到了。"
+  gm:
+    item:
+      name: "&b游戏模式"
+      lore: "&7选择一个游戏模式"
+    message:
+      applyToSelf: "&a您选择了一个游戏模式。"
+      applyToOther: "&b%s &a可以选择一个游戏模式。"
+      appliedByOther: "&b%s &a为您打开了游戏模式选择。"
+      survival: "&a您的游戏模式被更改为 生存。"
+      creative: "&a您的游戏模式被更改为 创造。"
+      adventure: "&a您的游戏模式被更改为 冒险。"
+      spectator: "&a您的游戏模式被更改为 观察。"
+  chatclear:
+    item:
+      name: "&e清空聊天栏"
+      lore: "&7为您或每个人##&7清空聊天栏"
+    message:
+      applyToSelf: "&a如果要为自己或所有人清除聊天，则选中此复选框。"
+      clearedForYou: "&a您清除了您的聊天。"
+      clearedForAll: "&a您清除了所有人的聊天。"
+      clearedByPlayer: "&a聊天被 &b%s&a 清除。"
+  cmdspy:
+    item:
+      name: "&c命令监控"
+      lore: "&7在玩家使用##&7一条命令时##&7给您发送一条消息。"
+    message:
+      toggleOn: "&a如果用户执行命令，您将收到一条消息。"
+      toggleOff: "&a如果用户执行命令，您将不会收到任何消息。"
+      commandUsed: "&c命令监控 &7> &b%s &a运行了 &b%s"
+  invclear:
+    item:
+      name: "&e清空背包"
+      lore: "&7清空一名##&7玩家的背包!"
+    message:
+      applyToSelf: "&a您清空了您的背包。"
+      applyToOther: "&a您清空了 &b%s&a 的背包。"
+      appliedByOther: "&b%s&a 清空了您的背包。"
+  difficulty:
+    item:
+      name: "&3设置难度"
+      lore: "&7为一个世界##&7设置难度"
+    message:
+      applyToSelf: "&a选择一个难度。"
+      difficultySet: "&a您将难度设置为 %s&a。"
+      noDifficultySelected: "&c您还没选择难度呢!"
+  worldtp:
+    item:
+      name: "&d传送"
+      lore: "&7传送您自己 ##&7或另一个玩家##&7到另一个世界!"
+    message:
+      applyToOther: "&a您传送了 &b%s&a。"
+      applyToSelf: "&a您传送了您自己。"
+      appliedByOther: "&b%s&a 传送了您。"
+  pvp:
+    item:
+      name: "&c切换 PvP"
+      lore: "&7允许或禁用 PvP##&7于一个世界中。"
+    message:
+      toggleOn: "&aPvP 于世界 &b%s&a 中被启用。"
+      toggleOff: "&aPvP 于世界 &b%s&a 被禁用。"
+  weather:
+    item:
+      name: "&c切换天气"
+      lore: "&7让一个世界##&7开始下雨##&7或停止下雨。"
+    message:
+      toggleOn: "&a不久后世界 &b%s&a 将下雨。"
+      toggleOff: "&a不久后世界 &b%s&a 会停雨。"
+  setspawn:
+    item:
+      name: "&e设置世界出生点"
+      lore: "&7设置您所处世界##&7所处位置##&7为世界重生点。"
+    message:
+      applyToSelf: "&a已设置重生点。"
