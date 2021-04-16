@@ -63,5 +63,8 @@ module:
       - gm
   kill:
     registerCommands: false
+  vanish:
+    aliases:
+     - v
 
 CONFIG_VERSION_NEVER_CHANGE_THIS: 3
